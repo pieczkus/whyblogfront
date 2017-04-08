@@ -1,0 +1,15 @@
+<div class="pinned" [style.background]="'url(' + post.coverUrl + ')'" *ngIf="!loading">
+  <div class="post-meta">
+    <div class="post-info">
+      <div class="post-date">{{post.publishedOn | date:"dd/MM/yyyy 'o' hh:mm"}}</div>
+      <div class="post-title">{{post.title}}</div>
+    </div>
+    <div>
+      <a md-raised-button routerLink=".">
+        Czytaj
+        <md-icon aria-hidden="true">access_time</md-icon>
+        {{post.timeToRead}}
+      </a>
+    </div>
+  </div>
+</div>

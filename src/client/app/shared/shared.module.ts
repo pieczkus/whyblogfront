@@ -5,23 +5,25 @@ import { RouterModule } from '@angular/router';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NameListService } from './name-list/name-list.service';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MaterialModule } from '@angular/material';
+import { PostService } from './post/post.service';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
-  declarations: [ToolbarComponent, NavbarComponent],
-  exports: [ToolbarComponent, NavbarComponent,
-    CommonModule, FormsModule, RouterModule]
+  imports: [CommonModule, RouterModule, MaterialModule],
+  declarations: [ToolbarComponent, NavbarComponent, SidenavComponent],
+  exports: [ToolbarComponent, NavbarComponent, SidenavComponent,
+    CommonModule, FormsModule, RouterModule, MaterialModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [NameListService]
+      providers: [PostService]
     };
   }
 }
