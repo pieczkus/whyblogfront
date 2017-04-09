@@ -8,6 +8,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MaterialModule } from '@angular/material';
 import { PostService } from './post/post.service';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostTileComponent } from './post-list/post-tile/post-tile.component';
+import { ReadPostButtonComponent } from './read-post-button/read-post-button.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -15,9 +18,10 @@ import { PostService } from './post/post.service';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
-  declarations: [ToolbarComponent, NavbarComponent, SidenavComponent],
-  exports: [ToolbarComponent, NavbarComponent, SidenavComponent,
-    CommonModule, FormsModule, RouterModule, MaterialModule]
+  declarations: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
+    ReadPostButtonComponent],
+  exports: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
+    ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

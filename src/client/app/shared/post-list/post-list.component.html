@@ -1,0 +1,9 @@
+<md-grid-list cols="3" gutterSize="0">
+  <md-grid-tile
+    *ngFor="let p of posts"
+    [colspan]="1"
+    [rowspan]="1"
+    class="post">
+    <wb-post-tile [post]="p"></wb-post-tile>
+  </md-grid-tile>
+</md-grid-list>
