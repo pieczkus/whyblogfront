@@ -22,8 +22,8 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      { src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true },
-      { src: '@angular/material/core/theming/prebuilt/indigo-pink.css.map', inject: true },
+      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true},
+      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css.map', inject: true},
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
@@ -41,6 +41,16 @@ export class ProjectConfig extends SeedConfig {
     }];
 
     this.addPackagesBundles(additionalPackages);
+    this.ROLLUP_INCLUDE_DIR = [
+      ...this.ROLLUP_INCLUDE_DIR,
+      //'node_modules/moment/**'
+    ];
+
+    this.ROLLUP_NAMED_EXPORTS = [
+      ...this.ROLLUP_NAMED_EXPORTS,
+      //{'node_modules/immutable/dist/immutable.js': [ 'Map' ]},
+    ];
+
     // Add packages (e.g. ng2-translate)
     // let additionalPackages: ExtendPackages[] = [{
     //   name: 'ng2-translate',
@@ -52,7 +62,7 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add proxy middleware */
     // this.PROXY_MIDDLEWARE = [
-    //   require('http-proxy-middleware')({ ws: false, target: 'http://localhost:3003' })
+    //   require('http-proxy-middleware')('/api', { ws: false, target: 'http://localhost:3003' })
     // ];
 
     /* Add to or override NPM module configurations: */
