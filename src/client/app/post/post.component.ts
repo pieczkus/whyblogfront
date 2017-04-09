@@ -1,23 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../../shared/post/post';
-import { PostService } from '../../shared/post/post.service';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Post } from '../shared/post/post';
+import { PostService } from '../shared/post/post.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   moduleId: module.id,
-  selector: 'wb-pinned',
-  templateUrl: 'pinned-post.component.html',
-  styleUrls: ['pinned-post.component.css'],
+  selector: 'wb-post',
+  templateUrl: 'post.component.html',
+  styleUrls: ['post.component.css'],
   animations: [
-    trigger('pinnedState', [
+    trigger('coverState', [
       state('inactive', style({opacity: 0})),
       state('active', style({opacity: 1})),
       transition('* => *', animate('.5s'))
     ])
   ]
 })
-export class PinnedPostComponent implements OnInit {
+export class PostComponent implements OnInit {
 
   post: Post;
   loading: boolean = true;
@@ -39,10 +39,6 @@ export class PinnedPostComponent implements OnInit {
           this.state = 'active';
         }, 200);
       });
-  }
-
-  getPinnedBackgroundImage() {
-    return 'url(' + this.post.coverUrl + ');';
   }
 
 }

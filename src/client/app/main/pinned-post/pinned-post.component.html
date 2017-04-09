@@ -1,11 +1,11 @@
-<div class="pinned" [style.background]="'url(' + post.coverUrl + ')'" *ngIf="!loading">
+<div class="pinned" [style.background]="'url(' + post.coverUrl + ')'" *ngIf="!loading" [@pinnedState]="state">
   <div class="post-meta">
     <div class="post-info">
       <div class="post-date">{{post.publishedOn | date:"dd/MM/yyyy 'o' hh:mm"}}</div>
       <div class="post-title">{{post.title}}</div>
     </div>
     <div>
-      <wb-read-post-button [timeToRead]="post.timeToRead"></wb-read-post-button>
+      <wb-read-post-button [timeToRead]="post.timeToRead" [postTitle]="post.title"></wb-read-post-button>
     </div>
   </div>
 </div>

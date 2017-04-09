@@ -1,0 +1,14 @@
+<div class="post-container" *ngIf="!loading" [@coverState]="state">
+  <div class="main-image" [style.background]="'url(' + post.coverUrl + ')'">
+    <a md-fab routerLink="/" class="home-link">
+      <md-icon aria-hidden="true">home</md-icon>
+    </a>
+    <div class="post-info">
+      <div class="post-date">{{post.publishedOn | date:"dd/MM/yyyy 'o' hh:mm"}}</div>
+      <div class="post-title">{{post.title}}</div>
+    </div>
+  </div>
+  <wb-post-body [body]="post.body"></wb-post-body>
+
+
+</div>

@@ -22,7 +22,7 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.postService.getPosts(this.offset, this.limit).subscribe(posts => {
-        this.posts = posts;
+        this.posts = posts.response;
       },
       error => this.errorMessage = error,
       () => {

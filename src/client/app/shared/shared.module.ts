@@ -11,17 +11,18 @@ import { PostService } from './post/post.service';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostTileComponent } from './post-list/post-tile/post-tile.component';
 import { ReadPostButtonComponent } from './read-post-button/read-post-button.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule],
   declarations: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
     ReadPostButtonComponent],
   exports: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
-    ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule]
+    ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule, BrowserAnimationsModule]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

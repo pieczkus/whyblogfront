@@ -1,0 +1,53 @@
+.post-container {
+  bottom: 0;
+  color: rgba(0, 0, 0, 0.9);
+  height: 560px;
+  left: 0;
+  margin-bottom: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.post-container .main-image {
+  background-size: cover !important;
+  background-position: center center;
+  display: block;
+  height: 100%;
+  position: relative;
+  animation: smoothFade 2s;
+  -moz-animation: smoothFade 2s;
+  -webkit-animation: smoothFade 2s;
+  -o-animation: smoothFade 2s;
+}
+
+.post-container .home-link {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  color: white;
+}
+
+.post-info {
+  color: #FFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .9);
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
+  width: 90%;
+  text-align: left;
+}
+
+.post-info .post-date {
+  font-style: italic;
+}
+
+.post-info .post-title {
+  font-size: 30px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
