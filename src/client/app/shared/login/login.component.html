@@ -1,0 +1,19 @@
+<md-card class="login-card">
+  <md-card-header>
+    <md-card-title>Login form</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form (submit)="login()">
+      <md-input-container>
+        <input mdInput placeholder="Username" [(ngModel)]="username" name="username">
+      </md-input-container>
+      <br/>
+      <md-input-container>
+        <input mdInput placeholder="Password" [(ngModel)]="password" name="password">
+      </md-input-container>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button (click)="login()">Login</button>
+  </md-card-actions>
+</md-card>
