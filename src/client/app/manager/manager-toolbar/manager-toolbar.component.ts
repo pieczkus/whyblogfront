@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../shared/authentication/authenticatio
 @Component({
   moduleId: module.id,
   selector: 'wb-manager-toolbar',
-  templateUrl: 'manager-toolbar.comonent.html',
+  templateUrl: 'manager-toolbar.component.html',
   styleUrls: ['manager-toolbar.component.css']
 })
 export class ManagerToolbarComponent {

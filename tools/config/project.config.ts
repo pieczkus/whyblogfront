@@ -22,8 +22,8 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true},
-      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css.map', inject: true},
+      {src: '@angular/material/prebuilt-themes/indigo-pink.css', inject: true},
+      // {src: '@angular/material/prebuilt-themes/indigo-pink.css.map', inject: true},
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];

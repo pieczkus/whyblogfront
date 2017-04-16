@@ -1,0 +1,9 @@
+<md-list>
+  <md-list-item *ngFor="let comp of components"> {{comp.name}}</md-list-item>
+</md-list>
+<form>
+  <md-select placeholder="State">
+    <md-option *ngFor="let state of states" [value]="state.code">{{ state.name }}</md-option>
+  </md-select>
+  <button md-button>Dodaj</button>
+</form>
