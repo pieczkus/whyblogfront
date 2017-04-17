@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostComponentService } from '../../../shared/component/post-component.service';
+import { PostComponent } from './post-component';
 
 @Component({
   moduleId: module.id,
@@ -6,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'component-list.component.html',
   styleUrls: ['component-list.component.css'],
 })
-export class ComponentListComponent {
+export class ComponentListComponent implements OnInit {
 
-  availableComponents: any[];
-  components: any[];
+  availableComponents: PostComponent[];
+  components: PostComponent[] = [];
+  selectedComponent: string;
+
+  constructor(public postComponentsService: PostComponentService) {
+  }
+
+  ngOnInit(): void {
+    this.availableComponents = this.postComponentsService.getAvailableComponents();
+  }
+
+  addComponent() {
+    this.components.push(this.postComponentsService.getComponent(this.selectedComponent));
+    this.selectedComponent = '';
+  }
 
 }

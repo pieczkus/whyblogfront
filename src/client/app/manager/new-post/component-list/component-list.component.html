@@ -1,9 +1,13 @@
 <md-list>
-  <md-list-item *ngFor="let comp of components"> {{comp.name}}</md-list-item>
+  <md-list-item *ngFor="let comp of components; let i = index">
+    <div md-line>
+      <wb-component-entry [component]="comp" [seq]="i + 1"></wb-component-entry>
+    </div>
+  </md-list-item>
 </md-list>
-<form>
-  <md-select placeholder="State">
-    <md-option *ngFor="let state of states" [value]="state.code">{{ state.name }}</md-option>
+<form class="new-component">
+  <md-select placeholder="Komponent" [(ngModel)]="selectedComponent" name="selectedComponent">
+    <md-option *ngFor="let comp of availableComponents" [value]="comp.name">{{ comp.name }}</md-option>
   </md-select>
-  <button md-button>Dodaj</button>
+  <button md-button (click)="addComponent()">Dodaj</button>
 </form>

@@ -6,12 +6,15 @@ import { ManagerPostListComponent } from './manager-post-list/manager-post-list.
 import { ManagerToolbarComponent } from './manager-toolbar/manager-toolbar.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import { ComponentListComponent } from './new-post/component-list/component-list.component';
+import { ComponentEntryComponent } from './new-post/component-list/component-entry/component-entry.component';
+import { EditFieldsDialogComponent } from './new-post/component-list/component-entry/edit/fields-edit.dialog';
 
 @NgModule({
   imports: [ManagerRoutingModule, SharedModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
-    ComponentListComponent],
+    ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent],
   exports: [ManagerComponent],
+  entryComponents: [EditFieldsDialogComponent]
 })
 export class ManagerModule {
 }
