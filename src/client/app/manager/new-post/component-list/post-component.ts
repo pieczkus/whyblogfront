@@ -1,5 +1,5 @@
 import { PostComponentField } from './post-component-field';
-import { BodyComponent } from '../../../shared/post/body-component';
+import { PostBodyComponent } from '../../../shared/post/post-body-component';
 
 export class PostComponent {
   name: string;
@@ -20,8 +20,8 @@ export class PostComponent {
     return new (this.constructor as typeof PostComponent)(this.name, this.component, clonedFields) as this;
   }
 
-  toBodyComponent(): BodyComponent {
-    let bodyComponent = new BodyComponent(this.name);
+  toBodyComponent(): PostBodyComponent {
+    let bodyComponent = new PostBodyComponent(this.name);
     for (let f of this.fields) {
       bodyComponent.addParameter(f.name, f.value);
     }

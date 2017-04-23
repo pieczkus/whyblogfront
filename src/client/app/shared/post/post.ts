@@ -1,9 +1,9 @@
-import { BodyComponent } from './body-component';
+import { PostBodyComponent } from './post-body-component';
 export class Post {
   postId: string;
   author: string;
   title: string;
-  body: BodyComponent[];
+  body: PostBodyComponent[];
   coverUrl: string;
   tags: string[];
   metaTitle: string;

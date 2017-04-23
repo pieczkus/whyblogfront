@@ -1,4 +1,4 @@
-export class BodyComponent {
+export class PostBodyComponent {
   component: string;
   parameters: Map<string, string>;
 

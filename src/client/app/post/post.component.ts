@@ -29,8 +29,8 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.postService.getPinnedPost().subscribe(post => {
-        this.post = post.response[0];
+    this.postService.getPost().subscribe(post => {
+        this.post = post;
       },
       error => this.errorMessage = error,
       () => {

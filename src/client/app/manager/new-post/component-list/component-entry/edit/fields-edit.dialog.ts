@@ -7,7 +7,7 @@ import { PostComponentField } from '../../post-component-field';
 import { InputComponent } from './input/input.component';
 import { InputDirective } from './input.directive';
 import { TextComponent } from './input/text/text.component';
-import { BreakoutComponent } from './input/breakout/breakout.component';
+import { UrlComponent } from './input/url/url.component';
 
 @Component({
   moduleId: module.id,
@@ -49,7 +49,7 @@ export class EditFieldsDialogComponent implements AfterContentInit {
     if (inputType === 'text') {
       return TextComponent;
     } else if (inputType === 'url') {
-      return BreakoutComponent;
+      return UrlComponent;
     } else {
       return TextComponent;
     }

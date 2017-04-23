@@ -10,15 +10,15 @@ import { ComponentEntryComponent } from './new-post/component-list/component-ent
 import { EditFieldsDialogComponent } from './new-post/component-list/component-entry/edit/fields-edit.dialog';
 import { TextComponent } from './new-post/component-list/component-entry/edit/input/text/text.component';
 import { InputDirective } from './new-post/component-list/component-entry/edit/input.directive';
-import { BreakoutComponent } from './new-post/component-list/component-entry/edit/input/breakout/breakout.component';
+import { UrlComponent } from './new-post/component-list/component-entry/edit/input/url/url.component';
 
 @NgModule({
   imports: [ManagerRoutingModule, SharedModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
     ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent, TextComponent,
-    InputDirective, BreakoutComponent],
+    InputDirective, UrlComponent],
   exports: [ManagerComponent],
-  entryComponents: [EditFieldsDialogComponent, TextComponent, BreakoutComponent]
+  entryComponents: [EditFieldsDialogComponent, TextComponent, UrlComponent]
 })
 export class ManagerModule {
 }

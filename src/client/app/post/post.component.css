@@ -1,15 +1,9 @@
 .post-container {
-  bottom: 0;
   color: rgba(0, 0, 0, 0.9);
   height: 560px;
-  left: 0;
   margin-bottom: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
   padding: 0;
-  position: relative;
   text-align: center;
-  top: 0;
   width: 100%;
 }
 
@@ -18,11 +12,6 @@
   background-position: center center;
   display: block;
   height: 100%;
-  position: relative;
-  animation: smoothFade 2s;
-  -moz-animation: smoothFade 2s;
-  -webkit-animation: smoothFade 2s;
-  -o-animation: smoothFade 2s;
 }
 
 .post-container .home-link {

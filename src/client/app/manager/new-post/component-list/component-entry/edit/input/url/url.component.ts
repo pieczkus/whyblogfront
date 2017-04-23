@@ -3,10 +3,10 @@ import { InputComponent } from '../input.component';
 import { PostComponentField } from '../../../../post-component-field';
 @Component({
   moduleId: module.id,
-  templateUrl: 'breakout.component.html',
-  styleUrls: ['breakout.component.css']
+  templateUrl: 'url.component.html',
+  styleUrls: ['url.component.css']
 })
-export class BreakoutComponent implements InputComponent {
+export class UrlComponent implements InputComponent {
 
   @Input() field: PostComponentField;
 
