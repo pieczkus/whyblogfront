@@ -4,17 +4,21 @@ import { ManagerComponent } from './manager.component';
 import { ManagerRoutingModule } from './manager-routing.module';
 import { ManagerPostListComponent } from './manager-post-list/manager-post-list.component';
 import { ManagerToolbarComponent } from './manager-toolbar/manager-toolbar.component';
-import {NewPostComponent} from './new-post/new-post.component';
+import { NewPostComponent } from './new-post/new-post.component';
 import { ComponentListComponent } from './new-post/component-list/component-list.component';
 import { ComponentEntryComponent } from './new-post/component-list/component-entry/component-entry.component';
 import { EditFieldsDialogComponent } from './new-post/component-list/component-entry/edit/fields-edit.dialog';
+import { TextComponent } from './new-post/component-list/component-entry/edit/input/text/text.component';
+import { InputDirective } from './new-post/component-list/component-entry/edit/input.directive';
+import { BreakoutComponent } from './new-post/component-list/component-entry/edit/input/breakout/breakout.component';
 
 @NgModule({
   imports: [ManagerRoutingModule, SharedModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
-    ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent],
+    ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent, TextComponent,
+    InputDirective, BreakoutComponent],
   exports: [ManagerComponent],
-  entryComponents: [EditFieldsDialogComponent]
+  entryComponents: [EditFieldsDialogComponent, TextComponent, BreakoutComponent]
 })
 export class ManagerModule {
 }

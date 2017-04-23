@@ -6,7 +6,8 @@ import { PostComponentField } from '../../manager/new-post/component-list/post-c
 export class PostComponentService {
 
   components: PostComponent[] = [
-    new PostComponent('Paragraf', '', [new PostComponentField('text', 'text')])
+    new PostComponent('Paragraf', '', [new PostComponentField('text', 'text')]),
+    new PostComponent('Breakout', '', [new PostComponentField('Adres Url', 'url')])
   ];
 
   getAvailableComponents(): PostComponent[] {

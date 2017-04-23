@@ -24,11 +24,5 @@ export class ComponentEntryComponent {
       disableClose: true
     });
     dialogRef.componentInstance.fields = this.component.fields;
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.currentWarehouse = result;
-    //   localStorage.setItem('warehouse', this.currentWarehouse);
-    //   this.onWarehouseChange.emit(result);
-    // });
   }
-
 }

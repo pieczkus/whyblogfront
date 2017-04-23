@@ -5,41 +5,41 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Tytuł">
+            <input mdInput placeholder="Tytuł" [(ngModel)]="post.title" name="title">
           </md-input-container>
         </td>
         <td colspan="2">
           <md-input-container class="full-width">
-            <input mdInput placeholder="Link do obrazka tytułowego">
+            <input type="url" mdInput placeholder="Link do obrazka tytułowego" [(ngModel)]="post.coverUrl" name="coverUrl">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Autor">
+            <input mdInput placeholder="Autor" [(ngModel)]="post.author" name="author">
           </md-input-container>
         </td>
         <td  colspan="2">
           <md-input-container class="full-width">
-            <input mdInput placeholder="Tagi">
+            <input mdInput placeholder="Tagi" [(ngModel)]="tags" name="tags">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Title">
+            <input mdInput placeholder="Meta Title" [(ngModel)]="post.metaTitle" name="metatitle">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Keywords">
+            <input mdInput placeholder="Meta Keywords" [(ngModel)]="post.metaKeywords" name="metakewords">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Description">
+            <input mdInput placeholder="Meta Description" [(ngModel)]="post.metaDescription" name="metadescription">
           </md-input-container>
         </td>
       </tr>
@@ -48,5 +48,7 @@
     <h3>Post</h3>
 
     <wb-component-list></wb-component-list>
+
+    <button md-button (click)="savePost()">Dodaj</button>
   </form>
 </div>

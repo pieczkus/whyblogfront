@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { PostComponentService } from '../../../shared/component/post-component.service';
 import { PostComponent } from './post-component';
 
@@ -22,7 +22,9 @@ export class ComponentListComponent implements OnInit {
   }
 
   addComponent() {
-    this.components.push(this.postComponentsService.getComponent(this.selectedComponent));
+    let component = this.postComponentsService.getComponent(this.selectedComponent);
+    console.log(component);
+    this.components.push(component);
     this.selectedComponent = '';
   }
 

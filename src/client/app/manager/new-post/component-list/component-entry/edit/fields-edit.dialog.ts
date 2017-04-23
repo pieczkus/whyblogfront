@@ -1,15 +1,20 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, ComponentFactoryResolver, OnDestroy, ViewChild, Type,
+  AfterContentInit
+} from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 import { PostComponentField } from '../../post-component-field';
-import { InputComponent } from './input.component';
+import { InputComponent } from './input/input.component';
 import { InputDirective } from './input.directive';
+import { TextComponent } from './input/text/text.component';
+import { BreakoutComponent } from './input/breakout/breakout.component';
 
 @Component({
   moduleId: module.id,
   templateUrl: 'fields-edit.dialog.html',
   styleUrls: ['fields-edit.dialog.css']
 })
-export class EditFieldsDialogComponent implements AfterViewInit, OnDestroy {
+export class EditFieldsDialogComponent implements AfterContentInit {
 
   fields: PostComponentField[] = [];
   @ViewChild(InputDirective) inputHost: InputDirective;
@@ -18,12 +23,8 @@ export class EditFieldsDialogComponent implements AfterViewInit, OnDestroy {
               private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+  ngAfterContentInit(): void {
+    this.loadComponent();
   }
 
   loadComponent() {
@@ -31,19 +32,27 @@ export class EditFieldsDialogComponent implements AfterViewInit, OnDestroy {
     let viewContainerRef = this.inputHost.viewContainerRef;
     viewContainerRef.clear();
 
-
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
-
-
-
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    (<InputComponent>componentRef.instance).field = adItem.data;
+    let self = this;
+    this.fields.forEach(function (f) {
+      let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
+        self.resolveInputComponent(f.type));
+      let componentRef = viewContainerRef.createComponent(componentFactory);
+      (<InputComponent>componentRef.instance).field = f;
+    });
   }
 
-  // chooseWarehouse() {
-  // if (this.selectedWarehouse && this.selectedWarehouse != '') {
-  //   this.dialogRef.close(this.selectedWarehouse);
-  // }
-  // }
+  saveFields() {
+    this.dialogRef.close();
+  }
+
+  private resolveInputComponent(inputType: string): Type<any> {
+    if (inputType === 'text') {
+      return TextComponent;
+    } else if (inputType === 'url') {
+      return BreakoutComponent;
+    } else {
+      return TextComponent;
+    }
+  }
 
 }

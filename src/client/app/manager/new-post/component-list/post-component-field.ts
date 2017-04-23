@@ -8,4 +8,8 @@ export class PostComponentField {
     this.name = name;
     this.type = type;
   }
+
+  clone(): PostComponentField {
+    return new (this.constructor as typeof PostComponentField)(this.name, this.type) as this;
+  }
 }
