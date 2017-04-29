@@ -13,6 +13,9 @@ import { BodyComponentDirective } from './body-component.directive';
 import { PostBodyComponent } from '../../shared/post/post-body-component';
 import { ParagraphComponent } from './component/paragraph/paragraph.component';
 import { BaseBodyComponent } from './component/base-component';
+import { BreakoutComponent } from './component/breakout/breakout.component';
+import { QuoteComponent } from './component/quote/quote.component';
+import { YoutubeComponent } from './component/youtube/youtube.component';
 
 @Component({
   moduleId: module.id,
@@ -49,6 +52,12 @@ export class BodyComponent implements AfterContentInit {
   resolveComponent(name: string): Type<any> {
     if (name === 'ParagraphComponent') {
       return ParagraphComponent;
+    } else if (name === 'BreakoutComponent') {
+      return BreakoutComponent;
+    } else if (name === 'QuoteComponent') {
+      return QuoteComponent;
+    } else if (name === 'YoutubeComponent') {
+      return YoutubeComponent;
     } else {
       return ParagraphComponent;
     }

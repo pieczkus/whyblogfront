@@ -1,0 +1,14 @@
+.breakout {
+  display: table;
+  width: 100%;
+}
+
+.breakout img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 320px;
+  margin: 50px 0;
+  height: auto;
+  max-height: 650px;
+}
