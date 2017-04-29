@@ -60,5 +60,13 @@ export class PostService {
     });
   }
 
+  getNextPost(): Observable<Post> {
+    return this.getPost();
+  }
+
+  getPrevPost(): Observable<Post> {
+    return this.getPost();
+  }
+
 }
 

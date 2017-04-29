@@ -10,11 +10,12 @@ import { BodyComponentDirective } from '../post/body/body-component.directive';
 import { BreakoutComponent } from '../post/body/component/breakout/breakout.component';
 import { QuoteComponent } from '../post/body/component/quote/quote.component';
 import { YoutubeComponent } from '../post/body/component/youtube/youtube.component';
+import { PostNavComponent } from '../post/nav/post-nav.component';
 
 @NgModule({
   imports: [MainRoutingModule, SharedModule],
   declarations: [MainComponent, PinnedPostComponent, PostComponent, BodyComponent, ParagraphComponent,
-    BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent],
+    BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent],
   exports: [MainComponent],
   entryComponents: [ParagraphComponent, BreakoutComponent, QuoteComponent, YoutubeComponent]
 })
