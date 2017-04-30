@@ -53,6 +53,7 @@ export class PostService {
         p.commentCount = 4;
         p.coverUrl = 'http://pieczki.pl/assets/img/wolinskieplaze/cover.jpg';
         p.body = [pbc1, pbc2, pbc3, pbc4];
+        p.tags = ['KAczka', 'Dupaczka', 'Sraczka'];
 
         observer.next(p);
         observer.complete();

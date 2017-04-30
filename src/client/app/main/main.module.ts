@@ -11,13 +11,13 @@ import { BreakoutComponent } from '../post/body/component/breakout/breakout.comp
 import { QuoteComponent } from '../post/body/component/quote/quote.component';
 import { YoutubeComponent } from '../post/body/component/youtube/youtube.component';
 import { PostNavComponent } from '../post/nav/post-nav.component';
-import { PostAuthorComponent } from '../post/author/post-author.component';
+import { PostTagsComponent } from '../post/tags/post-tags.component';
 
 @NgModule({
   imports: [MainRoutingModule, SharedModule],
   declarations: [MainComponent, PinnedPostComponent, PostComponent, BodyComponent, ParagraphComponent,
     BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent,
-    PostAuthorComponent],
+    PostTagsComponent],
   exports: [MainComponent],
   entryComponents: [ParagraphComponent, BreakoutComponent, QuoteComponent, YoutubeComponent]
 })

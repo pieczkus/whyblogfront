@@ -1,0 +1,26 @@
+.tags {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+.tags .header {
+  background: url('/assets/img/nav_background.jpg') no-repeat;
+
+  background-size: cover;
+  height: 65px;
+}
+
+.tags .cardgradient {
+  background: rgba(33, 150, 243, 0.3);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.tags md-card-content {
+  padding: 20px;
+}
