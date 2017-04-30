@@ -1,0 +1,18 @@
+.post-author{
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-author md-card-title {
+  color: #59606d;
+}
+
+.avatar {
+  background-color: #F5F5F5;
+  border: 1px solid #DDDDDD;
+  border-radius: 50% 50% 50% 50%;
+  padding: 4px;
+  max-width: 200px;
+  max-height: 200px;
+}
