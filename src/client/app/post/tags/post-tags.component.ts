@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ProfileService } from '../../shared/profile/profile.service';
-import { Profile } from '../../shared/profile/profile';
+import { Component, Input } from '@angular/core';
 
 @Component({
   moduleId: module.id,

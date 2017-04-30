@@ -3,11 +3,12 @@
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .tags .header {
   background: url('/assets/img/nav_background.jpg') no-repeat;
-
   background-size: cover;
   height: 65px;
 }
@@ -23,4 +24,12 @@
 
 .tags md-card-content {
   padding: 20px;
+}
+
+.tags md-card-title {
+  color: #FFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .9);
+  font-size: 20px;
+  padding: 20px;
+  font-weight: 500;
 }

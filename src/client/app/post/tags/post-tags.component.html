@@ -1,9 +1,8 @@
 <md-card class="tags">
   <md-card-header class="header">
+    <md-card-title>Tagi</md-card-title>
   </md-card-header>
   <md-card-content>
-    <md-chip-list>
-      <md-chip *ngFor="let t of tags">{{t}}</md-chip>
-    </md-chip-list>
+      <wb-tag-link-component *ngFor="let t of tags" [tag]="t"></wb-tag-link-component>
   </md-card-content>
 </md-card>
