@@ -14,18 +14,14 @@ export class PostService {
   constructor(private http: Http) {
   }
 
-  getPinnedPost(): Observable<PostResponse> {
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(new PostResponse(new Meta(200), new Post()));
-        observer.complete();
-      }, 1000);
-    });
+  getPinnedPost(): Observable<Post> {
+    return this.getPost();
   }
 
-  getPosts(offset: number, limit: number): Observable<PostResponse> {
+  getPosts(offset: number, limit: number): Observable<Post[]> {
     return new Observable(observer => {
       setTimeout(() => {
+        this.posts.push(this.createPost());
         observer.next(new PostResponse(new Meta(200), this.posts));
         observer.complete();
       }, 1000);
@@ -54,11 +50,16 @@ export class PostService {
         p.coverUrl = 'http://pieczki.pl/assets/img/wolinskieplaze/cover.jpg';
         p.body = [pbc1, pbc2, pbc3, pbc4];
         p.tags = ['KAczka', 'Dupaczka', 'Sraczka'];
+        p.relatedPosts = ['a', 'b', 'c'];
 
         observer.next(p);
         observer.complete();
       }, 1000);
     });
+  }
+
+  getPostById(postId: string): Observable<Post> {
+    return this.getPost();
   }
 
   getNextPost(): Observable<Post> {
@@ -67,6 +68,30 @@ export class PostService {
 
   getPrevPost(): Observable<Post> {
     return this.getPost();
+  }
+
+  createPost(): Post {
+    let p = new Post();
+    let pbc1 = new PostBodyComponent('ParagraphComponent');
+    pbc1.addParameter('text', 'Kilka dni próbowalismy obejrzeć zachód słońca z molo w Międzyzdrojach, ' +
+      'niestety nie udawało się bo słońce zachodziło zaczym tam dotarlismy. W przedostatni dzień pobytu udało się ' +
+      'zdążyć i słonko nas nie wyprzedziło. Faktem jest, że biegliśmy.');
+    let pbc2 = new PostBodyComponent('BreakoutComponent');
+    pbc2.addParameter('url', 'http://pieczki.pl/assets/img/wolinskieplaze/1.jpg');
+    pbc2.addParameter('title', 'Babaruba');
+    let pbc3 = new PostBodyComponent('QuoteComponent');
+    pbc3.addParameter('quote', 'Niunio Ap Ap');
+    pbc3.addParameter('author', 'Franciszek Pieczka');
+    let pbc4 = new PostBodyComponent('YoutubeComponent');
+    pbc4.addParameter('url', 'https://www.youtube.com/embed/sxYlBzJBgCM');
+    p.title = 'Madagaskar';
+    p.author = 'Agulka';
+    p.commentCount = 4;
+    p.coverUrl = 'http://pieczki.pl/assets/img/wolinskieplaze/cover.jpg';
+    p.body = [pbc1, pbc2, pbc3, pbc4];
+    p.tags = ['KAczka', 'Dupaczka', 'Sraczka'];
+    p.relatedPosts = ['a', 'b', 'c'];
+    return p;
   }
 
 }

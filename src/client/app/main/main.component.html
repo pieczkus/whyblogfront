@@ -1,2 +1,2 @@
 <wb-pinned></wb-pinned>
-<wb-post-list></wb-post-list>
+<wb-post-list *ngIf="!loading" [posts]="posts"></wb-post-list>

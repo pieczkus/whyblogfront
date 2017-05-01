@@ -23,14 +23,16 @@ export class PostComponent implements OnInit {
   loading: boolean = true;
   errorMessage: string;
   state: string = 'inactive';
+  relatedPosts: Post[] = [];
 
-  constructor(public postService: PostService, private sanitizer: DomSanitizer) {
+  constructor(public postService: PostService) {
   }
 
   ngOnInit(): void {
     this.loading = true;
     this.postService.getPost().subscribe(post => {
         this.post = post;
+        this.loadRelatedPosts();
       },
       error => this.errorMessage = error,
       () => {
@@ -39,6 +41,15 @@ export class PostComponent implements OnInit {
           this.state = 'active';
         }, 200);
       });
+  }
+
+  loadRelatedPosts(): void {
+    for (let r in this.post.relatedPosts) {
+      this.postService.getPostById(r).subscribe(rp => {
+        this.relatedPosts.push(rp);
+        console.log(this.relatedPosts);
+      });
+    }
   }
 
 }
