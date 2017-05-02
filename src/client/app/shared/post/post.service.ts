@@ -51,6 +51,7 @@ export class PostService {
         p.body = [pbc1, pbc2, pbc3, pbc4];
         p.tags = ['KAczka', 'Dupaczka', 'Sraczka'];
         p.relatedPosts = ['a', 'b', 'c'];
+        p.publishedOn = 1488986222976;
 
         observer.next(p);
         observer.complete();

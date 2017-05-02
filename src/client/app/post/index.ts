@@ -9,3 +9,7 @@ export * from './body/component/breakout/breakout.component'
 export * from './body/component/paragraph/paragraph.component'
 export * from './body/component/quote/quote.component'
 export * from './body/component/youtube/youtube.component'
+export * from './comment/comments.component'
+export * from './comment/comment/comment.component'
+export * from './comment/editor/comment-editor.component'
+

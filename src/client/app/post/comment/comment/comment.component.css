@@ -1,0 +1,14 @@
+.comment {
+  color: #59606d;
+  border-bottom: 1px solid lightgrey;
+}
+
+.comment .header {
+  font-size: 16px;
+}
+
+.comment .content {
+  font-weight: 300;
+  font-size: 16px;
+  white-space: normal;
+}

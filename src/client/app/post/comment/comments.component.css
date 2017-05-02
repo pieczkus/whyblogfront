@@ -1,0 +1,26 @@
+.comments {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.comments .title {
+  margin-left: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #444b60;
+}
+
+.comments .comment-list {
+  margin-top: 15px;
+}
+
+.progress {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  height: 40px;
+}

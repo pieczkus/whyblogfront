@@ -1,0 +1,16 @@
+<div class="comments">
+  <span class="title">Komentarze</span>
+  <md-card class="comment-list">
+    <md-card-content>
+      <div *ngIf="loading; else elseBlock">
+        <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+      </div>
+      <template #elseBlock>
+        <md-list *ngFor="let c of staggeringComments; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
+          <wb-comment [comment]="c"></wb-comment>
+        </md-list>
+      </template>
+      <wb-comment-editor></wb-comment-editor>
+    </md-card-content>
+  </md-card>
+</div>

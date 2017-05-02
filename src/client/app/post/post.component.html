@@ -10,6 +10,7 @@
   </div>
   <wb-post-body [components]="post.body"></wb-post-body>
   <wb-post-tags-component [tags]="post.tags"></wb-post-tags-component>
+  <wb-comments></wb-comments>
   <wb-post-list *ngIf="!loading" [posts]="relatedPosts"></wb-post-list>
   <wb-post-nav-component></wb-post-nav-component>
 

@@ -1,0 +1,31 @@
+<div class="editor">
+  <p>Zostaw wiadomość. Twój email nie będzie opublikowany.</p>
+  <form>
+    <table class="full-width">
+      <tbody>
+      <tr>
+        <td>
+          <md-input-container class="full-width">
+            <textarea mdInput [(ngModel)]="comment.text" name="text" placeholder="Komantarz"></textarea>
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container class="full-width">
+            <input mdInput [(ngModel)]="comment.name" name="name" placeholder="Twój Pseudonim">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container class="full-width">
+            <input type="email" mdInput [(ngModel)]="comment.email" name="email" placeholder="Adres Email">
+          </md-input-container>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+  <button md-raised-button>Dodaj Komentarz</button>
+</div>

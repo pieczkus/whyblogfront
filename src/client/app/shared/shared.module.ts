@@ -17,6 +17,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { AuthGuard } from './guards/auth.guard';
 import { PostComponentService } from './component/post-component.service';
 import { ProfileService } from './profile/profile.service';
+import { CommentService } from './comment/comment.service';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -34,7 +35,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, ProfileService]
+      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, ProfileService, CommentService]
     };
   }
 }

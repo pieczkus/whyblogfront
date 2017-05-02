@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.postService.getPosts(this.offset, this.limit).subscribe(posts => {
-        this.posts = posts.response;
+        this.posts = posts;
       },
       error => this.errorMessage = error,
       () => {
