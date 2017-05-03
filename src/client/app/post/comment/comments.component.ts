@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Input, OnInit } from '@angular/core';
 import { PostComment, CommentService } from '../../shared/comment/index';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
@@ -27,7 +27,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
     ])
   ]
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent {
 
   @Input() postId: string;
   comments: PostComment[];
@@ -35,14 +35,17 @@ export class CommentsComponent implements OnInit {
   next: number = 0;
   loading: boolean;
   errorMessage: string;
+  loaded:boolean = false;
 
   constructor(public commentService: CommentService) {
   }
 
-  ngOnInit(): void {
+
+  loadComments(): void {
     this.loading = true;
     this.commentService.getComments(this.postId).subscribe(comments => {
         this.comments = comments;
+        this.loaded = true;
         this.doNext();
       },
       error => this.errorMessage = error,
@@ -55,6 +58,11 @@ export class CommentsComponent implements OnInit {
     if (this.next < this.comments.length) {
       this.staggeringComments.push(this.comments[this.next++]);
     }
+  }
+
+  commentAdded(newComment: PostComment):void {
+    this.comments.push(newComment);
+    this.doNext();
   }
 
 }

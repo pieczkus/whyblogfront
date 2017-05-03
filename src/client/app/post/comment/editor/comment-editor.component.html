@@ -1,31 +1,44 @@
 <div class="editor">
   <p>Zostaw wiadomość. Twój email nie będzie opublikowany.</p>
-  <form>
+  <form [formGroup]="commentForm" *ngIf="active" (ngSubmit)="onSubmit()" autocomplete="off">
     <table class="full-width">
       <tbody>
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <textarea mdInput [(ngModel)]="comment.text" name="text" placeholder="Komantarz"></textarea>
+          <md-input-container class="comment-input">
+            <textarea mdInput mdTextareaAutosize mdAutosizeMinRows="6"
+                      formControlName="text" placeholder="Komantarz" required></textarea>
+            <md-hint *ngIf="formErrors.text" align="end">{{formErrors.text}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput [(ngModel)]="comment.name" name="name" placeholder="Twój Pseudonim">
+            <input mdInput formControlName="name" placeholder="Twój Pseudonim" required>
+            <md-hint *ngIf="formErrors.name" align="end">{{formErrors.name}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input type="email" mdInput [(ngModel)]="comment.email" name="email" placeholder="Adres Email">
+            <input type="email" mdInput formControlName="email" placeholder="Adres Email"
+                   required email>
+            <md-hint *ngIf="formErrors.email" align="end">{{formErrors.email}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       </tbody>
     </table>
+    <div *ngIf="loading; else elseBlock">
+      <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+    </div>
+    <ng-template #elseBlock>
+      <button type="submit" md-raised-button [disabled]="!commentForm.valid"
+              color="primary">Dodaj Komentarz
+      </button>
+    </ng-template>
   </form>
-  <button md-raised-button>Dodaj Komentarz</button>
+
 </div>

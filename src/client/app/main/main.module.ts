@@ -18,9 +18,10 @@ import {
   CommentComponent,
   CommentEditorComponent
 } from '../post/index';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [MainRoutingModule, SharedModule],
+  imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
   declarations: [MainComponent, PinnedPostComponent, PostComponent, BodyComponent, ParagraphComponent,
     BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent,
     PostTagsComponent, PostTagLinkComponent, CommentsComponent, CommentComponent, CommentEditorComponent],
