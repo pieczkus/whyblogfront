@@ -23,7 +23,7 @@ export class ManagerToolbarComponent {
 
   loggedInAs(): string {
     if (this.isLoggedIn()) {
-      return this.authenticationService.getCurrentUser().username;
+      return this.authenticationService.getCurrentUser().email;
     } else {
       return '';
     }

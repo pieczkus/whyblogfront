@@ -4,3 +4,12 @@
   margin-right: auto;
   margin-top: 35px
 }
+
+.progress-wrapper {
+  float: right;
+}
+
+.progress {
+  width: 40px;
+  height: 40px;
+}

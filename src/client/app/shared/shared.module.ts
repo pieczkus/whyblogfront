@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -18,13 +18,14 @@ import { AuthGuard } from './guards/auth.guard';
 import { PostComponentService } from './component/post-component.service';
 import { ProfileService } from './profile/profile.service';
 import { CommentService } from './comment/comment.service';
+import { HttpClient } from './http/http.client';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule, FormsModule],
+  imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
   declarations: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
     ReadPostButtonComponent, LoginComponent],
   exports: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
@@ -35,7 +36,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, ProfileService, CommentService]
+      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, ProfileService, CommentService, HttpClient]
     };
   }
 }

@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 import { User } from './user';
+import { HttpClient } from '../http/http.client';
+import { Config } from '../config/env.config';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string): Observable<User> {
-    return new Observable(observer => {
-      setTimeout(() => {
-        let user: User;
-        if (username === 'multiple') {
-          user = new User(username, ['Manager', 'Admin']);
-        } else {
-          user = new User(username, ['User']);
+  login(email: string, password: string) {
+    return this.http.post(Config.AUTH_API + '/login', JSON.stringify({email: email, password: password}))
+      .map((response: Response) => {
+        let user = response.json();
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
         }
-        observer.next(user);
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        observer.complete();
-      }, 500);
-    });
+      });
   }
 
   logout() {

@@ -3,4 +3,6 @@
 export interface EnvConfig {
   API?: string;
   ENV?: string;
+  AUTH_API?: string;
+  AUTH_KEY?: string;
 }

@@ -3,17 +3,23 @@
     <md-card-title>Login form</md-card-title>
   </md-card-header>
   <md-card-content>
-    <form (submit)="login()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
       <md-input-container>
-        <input mdInput placeholder="Username" [(ngModel)]="username" name="username">
+        <input mdInput placeholder="Adres Email" formControlName="email">
       </md-input-container>
       <br/>
       <md-input-container>
-        <input mdInput placeholder="Password" [(ngModel)]="password" name="password">
+        <input type="password" mdInput placeholder="Hasło" formControlName="password">
       </md-input-container>
+      <br/>
+      <div class="progress-wrapper" [@spinnerVisibilityChanged]="state">
+        <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+      </div>
+      <div >
+        <button type="submit" md-raised-button [disabled]="!loginForm.valid || loading"
+                color="primary">Login
+        </button>
+      </div>
     </form>
   </md-card-content>
-  <md-card-actions>
-    <button md-raised-button (click)="login()">Login</button>
-  </md-card-actions>
 </md-card>

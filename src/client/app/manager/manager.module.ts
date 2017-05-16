@@ -11,9 +11,10 @@ import { EditFieldsDialogComponent } from './new-post/component-list/component-e
 import { TextComponent } from './new-post/component-list/component-entry/edit/input/text/text.component';
 import { InputDirective } from './new-post/component-list/component-entry/edit/input.directive';
 import { UrlComponent } from './new-post/component-list/component-entry/edit/input/url/url.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [ManagerRoutingModule, SharedModule],
+  imports: [ManagerRoutingModule, SharedModule, ReactiveFormsModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
     ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent, TextComponent,
     InputDirective, UrlComponent],
