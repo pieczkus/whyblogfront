@@ -8,6 +8,12 @@ export class HttpClient {
   constructor(private http: Http) {
   }
 
+  get(url: string) {
+    let headers = new Headers();
+    this.createApiKeyHeader(headers);
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(url, options);
+  }
 
   post(url: string, data: any) {
     let headers = new Headers();
@@ -18,16 +24,16 @@ export class HttpClient {
     return this.http.post(url, data, options);
   }
 
-  private createJsonHeaders(headers: Headers) {
+  private createJsonHeaders(headers: Headers): void {
     headers.append('Content-Type', 'application/json');
     headers.append('Csrf-Token', 'nocheck');
   }
 
-  private createApiKeyHeader(headers: Headers) {
-    headers.append('Why-Key', Config.AUTH_KEY);
+  private createApiKeyHeader(headers: Headers): void {
+    headers.append('Why-Key', Config.API_KEY);
   }
 
-  private createAuthorizationHeader(headers: Headers) {
+  private createAuthorizationHeader(headers: Headers): void {
     headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 }

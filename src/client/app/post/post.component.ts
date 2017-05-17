@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Post } from '../shared/post/post';
 import { PostService } from '../shared/post/post.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -25,12 +25,18 @@ export class PostComponent implements OnInit {
   state: string = 'inactive';
   relatedPosts: Post[] = [];
 
-  constructor(public postService: PostService) {
+  constructor(public postService: PostService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.loading = true;
-    this.postService.getPost().subscribe(post => {
+    this.route.params.subscribe(params => {
+      this.loadPost(params['title']);
+    });
+  }
+
+  loadPost(title: string) {
+    this.postService.getPost(title).subscribe(post => {
         this.post = post;
         this.loadRelatedPosts();
       },
@@ -47,7 +53,6 @@ export class PostComponent implements OnInit {
     for (let r in this.post.relatedPosts) {
       this.postService.getPostById(r).subscribe(rp => {
         this.relatedPosts.push(rp);
-        console.log(this.relatedPosts);
       });
     }
   }

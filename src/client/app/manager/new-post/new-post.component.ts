@@ -28,7 +28,6 @@ export class NewPostComponent implements OnInit {
       }
       this.post.body = bodyComponents;
       this.post.tags = this.tags.split('|');
-      console.log(this.post);
     }
   }
 

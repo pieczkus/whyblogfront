@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../../shared/post/post';
 import { PostService } from '../../shared/post/post.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -24,7 +23,7 @@ export class PinnedPostComponent implements OnInit {
   errorMessage: string;
   state: string = 'inactive';
 
-  constructor(public postService: PostService, private sanitizer: DomSanitizer) {
+  constructor(public postService: PostService) {
   }
 
   ngOnInit(): void {

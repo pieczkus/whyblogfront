@@ -38,7 +38,6 @@ export class CommentEditorComponent implements OnInit {
     this.loading = true;
     this.submitted = true;
     this.comment = this.commentForm.value;
-    console.log(this.comment);
     this.commentService.addComment(this.comment).subscribe(comment => {
         this.comment = new PostComment();
         this.onCommentAdded.emit(comment);

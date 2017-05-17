@@ -45,7 +45,7 @@ export class BodyComponent implements AfterContentInit {
       let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
         self.resolveComponent(c.component));
       let componentRef = viewContainerRef.createComponent(componentFactory);
-      (<BaseBodyComponent>componentRef.instance).parameters = c.parameters;
+      (<BaseBodyComponent>componentRef.instance).parameters = self.convertToParameterMap(c.parameters);
     });
   }
 
@@ -61,6 +61,18 @@ export class BodyComponent implements AfterContentInit {
     } else {
       return ParagraphComponent;
     }
+  }
+
+  convertToParameterMap(objects: Object[]) {
+    let parameters: Map<string, string> = new Map();
+    for (let o of objects) {
+      for (let property in o) {
+        if (o.hasOwnProperty(property)) {
+          parameters.set(property, (<any>o)[property]);
+        }
+      }
+    }
+    return parameters;
   }
 
 

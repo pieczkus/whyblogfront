@@ -1,13 +1,10 @@
 export class PostBodyComponent {
   component: string;
-  parameters: Map<string, string>;
+  parameters: Object[];
 
-  constructor(component: string) {
+  constructor(component: string, parameters: Object[]) {
     this.component = component;
-    this.parameters = new Map();
+    this.parameters = parameters;
   }
 
-  addParameter(name: string, value: string) {
-    this.parameters.set(name, value);
-  }
 }

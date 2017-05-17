@@ -7,7 +7,7 @@ import { PostComponent } from '../post/post.component';
   imports: [
     RouterModule.forChild([
       {path: '', component: MainComponent},
-      {path: 'post/:id', component: PostComponent}
+      {path: 'post/:title', component: PostComponent}
     ])
   ],
   exports: [RouterModule]

@@ -4,5 +4,6 @@ export interface EnvConfig {
   API?: string;
   ENV?: string;
   AUTH_API?: string;
-  AUTH_KEY?: string;
+  POST_API?: string;
+  API_KEY?: string;
 }

@@ -18,7 +18,6 @@ export class YoutubeComponent implements BaseBodyComponent, OnInit {
 
   ngOnInit(): void {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.parameters.get('url'));
-    console.log(this.videoUrl);
   }
 
 }
