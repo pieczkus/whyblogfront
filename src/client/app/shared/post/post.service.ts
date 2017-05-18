@@ -54,9 +54,9 @@ export class PostService {
     return this.getPost('');
   }
 
-  createPost(): Post {
-    let p = new Post();
-    return p;
+  createPost(post: Post): Observable<Response> {
+    return this.http.post(Config.POST_API + '/', JSON.stringify(post))
+      .catch(this.handleError);
   }
 
   private handleError(error: Response | any) {

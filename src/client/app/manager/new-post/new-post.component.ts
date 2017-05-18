@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ComponentListComponent } from './component-list/component-list.component';
 import { Post } from '../../shared/post/post';
+import { PostService } from '../../shared/post/post.service';
 
 @Component({
   moduleId: module.id,
@@ -16,6 +17,9 @@ export class NewPostComponent implements OnInit {
   @ViewChild(ComponentListComponent)
   private componentList: ComponentListComponent;
 
+  constructor(private postservice: PostService) {
+  }
+
   ngOnInit(): void {
     this.post = new Post();
   }
@@ -29,6 +33,7 @@ export class NewPostComponent implements OnInit {
       this.post.body = bodyComponents;
       this.post.tags = this.tags.split('|');
     }
+    this.postservice.createPost(this.post).subscribe(resp => console.log('post created?'));
   }
 
   validateFields(): boolean {

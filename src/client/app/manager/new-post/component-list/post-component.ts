@@ -21,11 +21,13 @@ export class PostComponent {
   }
 
   toBodyComponent(): PostBodyComponent {
-    let parameters: Map<string, string> = new Map();
+    let parameters: Object[] = [];
     for (let f of this.fields) {
-      parameters.set(f.name, f.value);
+      let field: any = {};
+      field['name'] = f.name.toLowerCase();
+      field['value'] = f.value;
+      parameters.push(field);
     }
-    //let bodyComponent = new PostBodyComponent(this.name, parameters);
-    return new PostBodyComponent(this.name, []);
+    return new PostBodyComponent(this.name, parameters);
   }
 }
