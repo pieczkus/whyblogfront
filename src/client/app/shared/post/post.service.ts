@@ -42,6 +42,11 @@ export class PostService {
       .catch(this.handleError);
   }
 
+  pinPost(title: String): Observable<Response> {
+    return this.http.post(Config.POST_API + '/title/' + title + '/pin', '')
+      .catch(this.handleError);
+  }
+
   getPostById(postId: string): Observable<Post> {
     return this.getPost('');
   }

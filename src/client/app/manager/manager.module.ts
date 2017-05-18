@@ -12,12 +12,13 @@ import { TextComponent } from './new-post/component-list/component-entry/edit/in
 import { InputDirective } from './new-post/component-list/component-entry/edit/input.directive';
 import { UrlComponent } from './new-post/component-list/component-entry/edit/input/url/url.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PublishedPostComponent } from './manager-post-list/published-post/published-post.component';
 
 @NgModule({
   imports: [ManagerRoutingModule, SharedModule, ReactiveFormsModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
     ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent, TextComponent,
-    InputDirective, UrlComponent],
+    InputDirective, UrlComponent, PublishedPostComponent],
   exports: [ManagerComponent],
   entryComponents: [EditFieldsDialogComponent, TextComponent, UrlComponent]
 })
