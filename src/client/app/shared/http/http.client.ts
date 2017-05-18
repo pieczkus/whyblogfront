@@ -11,6 +11,7 @@ export class HttpClient {
   get(url: string) {
     let headers = new Headers();
     this.createApiKeyHeader(headers);
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
     return this.http.get(url, options);
   }
@@ -34,6 +35,9 @@ export class HttpClient {
   }
 
   private createAuthorizationHeader(headers: Headers): void {
-    headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && user.token) {
+      headers.append('Authorization', 'Bearer ' + user.token);
+    }
   }
 }

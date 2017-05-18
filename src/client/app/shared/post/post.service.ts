@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Post } from './post';
-import { PostBodyComponent } from './post-body-component';
 import { HttpClient } from '../http/http.client';
 import { Config } from '../config/env.config';
 
@@ -21,13 +20,20 @@ export class PostService {
   }
 
   getPosts(offset: number, limit: number): Observable<Post[]> {
-    return new Observable(observer => {
-      setTimeout(() => {
-        this.posts.push(this.createPost());
-        observer.next(this.posts);
-        observer.complete();
-      }, 1000);
-    });
+    return this.http.get(Config.POST_API + '/')
+      .map(res => <Post[]> res.json())
+      .catch(this.handleError);
+  }
+
+  getNotPublishedPosts(): Observable<Post[]> {
+    return this.http.get(Config.POST_API + '/notpublished')
+      .map(res => <Post[]> res.json())
+      .catch(this.handleError);
+  }
+
+  publishPost(title: string): Observable<Response> {
+    return this.http.post(Config.POST_API + '/title/' + title, '')
+      .catch(this.handleError);
   }
 
   getPost(title: String): Observable<Post> {

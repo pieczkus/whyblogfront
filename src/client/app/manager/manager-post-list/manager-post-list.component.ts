@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../shared/post/post.service';
+import { Post } from '../../shared/post/post';
 
 @Component({
   moduleId: module.id,
@@ -6,29 +8,51 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'manager-post-list.component.html',
   styleUrls: ['manager-post-list.component.css'],
 })
-export class ManagerPostListComponent {
-  folders = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  notes = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-  ];
+export class ManagerPostListComponent implements OnInit {
+
+  posts: Post[];
+  loading = false;
+  errorMessage: string;
+  notPublishedPosts: Post[];
+  notPublishedLoading = false;
+  notPublishedErrorMessage: string;
+
+  constructor(private postService: PostService) {
+  }
+
+  ngOnInit(): void {
+    this.loadPosts();
+    this.loadNotPublishedPosts();
+  }
+
+  publish(title: string) {
+    this.postService.publishPost(title).subscribe(res => {
+      this.loadPosts();
+      this.loadNotPublishedPosts();
+    });
+  }
+
+  private loadPosts() {
+    this.loading = true;
+    this.postService.getPosts(0, 0).subscribe(posts => {
+        this.posts = posts;
+      },
+      error => this.errorMessage = error,
+      () => {
+        this.loading = false;
+      });
+  }
+
+  private loadNotPublishedPosts() {
+    this.notPublishedLoading = true;
+    this.postService.getNotPublishedPosts().subscribe(posts => {
+        this.notPublishedPosts = posts;
+      },
+      error => this.notPublishedErrorMessage = error,
+      () => {
+        this.notPublishedLoading = false;
+      });
+  }
+
+
 }

@@ -1,14 +1,7 @@
 import {
   AfterContentInit,
-  AfterViewInit, Compiler, Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ElementRef, Input,
-  ModuleWithComponentFactories,
-  NgModule,
-  OnInit, Type, ViewChild,
-  ViewContainerRef
+  Component, ComponentFactoryResolver, Input, Type, ViewChild
 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { CommonModule } from '@angular/common';
 import { BodyComponentDirective } from './body-component.directive';
 import { PostBodyComponent } from '../../shared/post/post-body-component';
 import { ParagraphComponent } from './component/paragraph/paragraph.component';
