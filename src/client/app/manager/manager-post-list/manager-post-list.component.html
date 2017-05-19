@@ -4,9 +4,6 @@
   </wb-manager-published-post>
   <md-divider></md-divider>
   <h3 md-subheader>Nieopublikowane Posty</h3>
-  <md-list-item *ngFor="let post of notPublishedPosts">
-    <md-icon md-list-icon>note</md-icon>
-    <h4 md-line>{{post.title}}</h4>
-    <p md-line><button md-button (click)="publish(post.title)">Opublikuj</button></p>
-  </md-list-item>
+  <wb-manager-not-published-post *ngFor="let post of notPublishedPosts" [post]="post">
+  </wb-manager-not-published-post>
 </md-list>
