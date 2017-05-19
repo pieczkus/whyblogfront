@@ -19,12 +19,14 @@ import {
   CommentEditorComponent
 } from '../post/index';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TagComponent } from '../tag/tag.component';
 
 @NgModule({
   imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
   declarations: [MainComponent, PinnedPostComponent, PostComponent, BodyComponent, ParagraphComponent,
     BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent,
-    PostTagsComponent, PostTagLinkComponent, CommentsComponent, CommentComponent, CommentEditorComponent],
+    PostTagsComponent, PostTagLinkComponent, CommentsComponent, CommentComponent, CommentEditorComponent,
+    TagComponent],
   exports: [MainComponent],
   entryComponents: [ParagraphComponent, BreakoutComponent, QuoteComponent, YoutubeComponent]
 })

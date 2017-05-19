@@ -10,9 +10,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   styleUrls: ['pinned-post.component.css'],
   animations: [
     trigger('pinnedState', [
-      state('inactive', style({opacity: 0})),
+      state('inactive', style({opacity: 0.5})),
       state('active', style({opacity: 1})),
-      transition('* => *', animate('.5s'))
+      transition('* => *', animate('.7s'))
     ])
   ]
 })

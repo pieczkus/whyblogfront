@@ -47,6 +47,12 @@ export class PostService {
       .catch(this.handleError);
   }
 
+  getPostsByTag(tag: string): Observable<Post[]> {
+    return this.http.get(Config.POST_API + '/tag/' + tag)
+      .map(res => <Post> res.json())
+      .catch(this.handleError);
+  }
+
   getPostById(postId: string): Observable<Post> {
     return this.getPost('');
   }

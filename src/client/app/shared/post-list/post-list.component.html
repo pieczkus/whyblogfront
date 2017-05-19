@@ -1,9 +1,10 @@
 <md-grid-list cols="3" gutterSize="0">
   <md-grid-tile
-    *ngFor="let p of posts"
-    [colspan]="1"
+    *ngFor="let p of staggeringPosts"
+    [colspan]="3"
     [rowspan]="1"
-    class="post">
+    class="post"
+    (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
     <wb-post-tile [post]="p"></wb-post-tile>
   </md-grid-tile>
 </md-grid-list>
