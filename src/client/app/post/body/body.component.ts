@@ -1,6 +1,6 @@
 import {
   AfterContentInit,
-  Component, ComponentFactoryResolver, Input, Type, ViewChild
+  Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild
 } from '@angular/core';
 import { BodyComponentDirective } from './body-component.directive';
 import { PostBodyComponent } from '../../shared/post/post-body-component';
@@ -16,7 +16,7 @@ import { YoutubeComponent } from './component/youtube/youtube.component';
   templateUrl: 'body.component.html',
   styleUrls: ['body.component.css']
 })
-export class BodyComponent implements AfterContentInit {
+export class BodyComponent implements OnChanges {
 
   @Input() components: PostBodyComponent[];
   @ViewChild(BodyComponentDirective) bodyHost: BodyComponentDirective;
@@ -24,22 +24,20 @@ export class BodyComponent implements AfterContentInit {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
-  ngAfterContentInit(): void {
-    this.loadComponent();
-  }
+  ngOnChanges(changes: SimpleChanges): void {
+    let change = changes['components'].currentValue;
+    if (change) {
+      let viewContainerRef = this.bodyHost.viewContainerRef;
+      viewContainerRef.clear();
 
-  loadComponent() {
-
-    let viewContainerRef = this.bodyHost.viewContainerRef;
-    viewContainerRef.clear();
-
-    let self = this;
-    this.components.forEach(function (c) {
-      let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
-        self.resolveComponent(c.component));
-      let componentRef = viewContainerRef.createComponent(componentFactory);
-      (<BaseBodyComponent>componentRef.instance).parameters = self.convertToParameterMap(c.parameters);
-    });
+      let self = this;
+      this.components.forEach(function (c) {
+        let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
+          self.resolveComponent(c.component));
+        let componentRef = viewContainerRef.createComponent(componentFactory);
+        (<BaseBodyComponent>componentRef.instance).parameters = self.convertToParameterMap(c.parameters);
+      });
+    }
   }
 
   resolveComponent(name: string): Type<any> {
