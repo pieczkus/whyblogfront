@@ -57,12 +57,16 @@ export class PostService {
     return this.getPost('');
   }
 
-  getNextPost(): Observable<Post> {
-    return this.getPost('');
+  getNextPost(publishedOn: number): Observable<Post> {
+    return this.http.get(Config.POST_API + '/after/' + publishedOn)
+      .map(res => <Post> res.json())
+      .catch(this.handleError);
   }
 
-  getPrevPost(): Observable<Post> {
-    return this.getPost('');
+  getPrevPost(publishedOn: number): Observable<Post> {
+    return this.http.get(Config.POST_API + '/before/' + publishedOn)
+      .map(res => <Post> res.json())
+      .catch(this.handleError);
   }
 
   createPost(post: Post): Observable<Response> {
@@ -72,14 +76,7 @@ export class PostService {
 
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
+    let errMsg = error.message ? error.message : error.toString();
     console.error(errMsg);
     return Observable.throw(errMsg);
   }

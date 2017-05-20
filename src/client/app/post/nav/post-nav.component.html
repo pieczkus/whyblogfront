@@ -1,17 +1,17 @@
 <md-grid-list cols="2" rowHeight="165px" class="post-nav">
-  <md-grid-tile *ngIf="prevPostTitle">
+  <md-grid-tile>
     <a routerLink="/post/{{prevPostTitle}}"
-       style="position: relative; overflow: hidden; text-align: left;">
+       style="position: relative; overflow: hidden; text-align: left;" *ngIf="prevPostTitle">
       <span class="nav-header left-header">Poprzedni</span>
       <md-icon class="icon left-icon">undo</md-icon>
       <span class="nav-title">{{prevPostTitle}}</span>
     </a>
   </md-grid-tile>
-  <md-grid-tile *ngIf="nextPostTitle">
+  <md-grid-tile>
     <a routerLink="/post/{{nextPostTitle}}" class="right"
-       style="position: relative; overflow: hidden;">
+       style="position: relative; overflow: hidden;" *ngIf="nextPostTitle">
       <span class="nav-header right-header">Następny</span>
-      <span class="nav-title">{{prevPostTitle}}</span>
+      <span class="nav-title">{{nextPostTitle}}</span>
       <md-icon class="icon right-icon">redo</md-icon>
     </a>
   </md-grid-tile>

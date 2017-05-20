@@ -31,6 +31,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.route.params.subscribe(params => {
+      console.log('title' + params['title']);
       this.loadPost(params['title']);
     });
   }
