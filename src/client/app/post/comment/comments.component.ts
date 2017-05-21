@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PostComment, CommentService } from '../../shared/comment/index';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
@@ -27,7 +27,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
     ])
   ]
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnChanges {
 
   @Input() postId: string;
   comments: PostComment[];
@@ -40,6 +40,15 @@ export class CommentsComponent {
   constructor(public commentService: CommentService) {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    let change = changes['postId'].currentValue;
+    if (change) {
+      this.staggeringComments = [];
+      this.comments = [];
+      this.loaded = false;
+      this.next = 0;
+    }
+  }
 
   loadComments(): void {
     this.loading = true;
@@ -60,7 +69,7 @@ export class CommentsComponent {
     }
   }
 
-  commentAdded(newComment: PostComment):void {
+  commentAdded(newComment: PostComment): void {
     this.comments.push(newComment);
     this.doNext();
   }
