@@ -1,5 +1,6 @@
 import { PostBodyComponent } from './post-body-component';
 export class Post {
+  postId: string;
   author: string;
   title: string;
   body: PostBodyComponent[];
