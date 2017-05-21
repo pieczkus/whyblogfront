@@ -1,7 +1,8 @@
 export class PostComment {
-  commentId: string;
-  name: string;
+  uuid: string;
+  referenceUuid: string;
+  authorName: string;
+  content: string;
+  createdOnOn: number;
   email: string;
-  text: string;
-  postedOn: number;
 }

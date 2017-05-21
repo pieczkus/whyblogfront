@@ -28,8 +28,8 @@ export class CommentEditorComponent implements OnInit {
 
   buildForm(): void {
     this.commentForm = this.fb.group({
-      'name': [this.comment.name, Validators.required],
-      'text': [this.comment.text, Validators.required],
+      'name': [this.comment.authorName, Validators.required],
+      'text': [this.comment.content, Validators.required],
       'email': [this.comment.email, Validators.required]
     });
   }
