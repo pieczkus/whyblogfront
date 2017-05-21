@@ -7,7 +7,7 @@
         <td>
           <md-input-container class="comment-input">
             <textarea mdInput mdTextareaAutosize mdAutosizeMinRows="6"
-                      formControlName="text" placeholder="Komantarz" required></textarea>
+                      formControlName="content" placeholder="Komantarz" required></textarea>
             <!--<md-hint *ngIf="formErrors.text" align="end">{{formErrors.text}}</md-hint>-->
           </md-input-container>
         </td>
@@ -15,7 +15,7 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput formControlName="name" placeholder="Twój Pseudonim" required>
+            <input mdInput formControlName="authorName" placeholder="Twój Pseudonim" required>
             <!--<md-hint *ngIf="formErrors.name" align="end">{{formErrors.name}}</md-hint>-->
           </md-input-container>
         </td>

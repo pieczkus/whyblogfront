@@ -18,12 +18,9 @@ export class CommentService {
   }
 
   addComment(comment: PostComment): Observable<PostComment> {
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(comment);
-        observer.complete();
-      }, 5000);
-    });
+    console.log('new Comment ' + comment);
+    return this.http.post(Config.COMMENT_API + '/', JSON.stringify(comment))
+      .catch(this.handleError);
   }
 
   private handleError(error: Response | any) {

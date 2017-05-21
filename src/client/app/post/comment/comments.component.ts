@@ -35,7 +35,7 @@ export class CommentsComponent {
   next: number = 0;
   loading: boolean;
   errorMessage: string;
-  loaded:boolean = false;
+  loaded: boolean = false;
 
   constructor(public commentService: CommentService) {
   }

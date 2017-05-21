@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PostComment } from '../../../shared/comment/comment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommentService } from '../../../shared/comment/comment.service';
@@ -11,6 +11,7 @@ import { CommentService } from '../../../shared/comment/comment.service';
 })
 export class CommentEditorComponent implements OnInit {
 
+  @Input() postId: string;
   comment: PostComment = new PostComment();
   submitted: boolean = false;
   active: boolean = true;
@@ -28,8 +29,8 @@ export class CommentEditorComponent implements OnInit {
 
   buildForm(): void {
     this.commentForm = this.fb.group({
-      'name': [this.comment.authorName, Validators.required],
-      'text': [this.comment.content, Validators.required],
+      'authorName': [this.comment.authorName, Validators.required],
+      'content': [this.comment.content, Validators.required],
       'email': [this.comment.email, Validators.required]
     });
   }
@@ -38,9 +39,11 @@ export class CommentEditorComponent implements OnInit {
     this.loading = true;
     this.submitted = true;
     this.comment = this.commentForm.value;
+    this.comment.referenceUuid = this.postId;
+    this.comment.createdOn = (new Date()).getMilliseconds();
     this.commentService.addComment(this.comment).subscribe(comment => {
+        this.onCommentAdded.emit(this.comment);
         this.comment = new PostComment();
-        this.onCommentAdded.emit(comment);
 
         //form reset workaround
         this.buildForm();

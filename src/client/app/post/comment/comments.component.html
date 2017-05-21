@@ -13,7 +13,7 @@
           <wb-comment [comment]="c"></wb-comment>
         </md-list>
       </ng-template>
-      <wb-comment-editor (onCommentAdded)="commentAdded($event)"></wb-comment-editor>
+      <wb-comment-editor [postId]="postId" (onCommentAdded)="commentAdded($event)"></wb-comment-editor>
     </md-card-content>
   </md-card>
 </div>

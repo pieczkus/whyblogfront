@@ -3,6 +3,6 @@ export class PostComment {
   referenceUuid: string;
   authorName: string;
   content: string;
-  createdOnOn: number;
+  createdOn: number;
   email: string;
 }
