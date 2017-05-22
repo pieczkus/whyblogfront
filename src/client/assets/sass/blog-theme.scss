@@ -1,0 +1,12 @@
+@import '~@angular/material/_theming';
+
+@include mat-core();
+
+$blog-primary: mat-palette($mat-light-blue);
+$blog-accent: mat-palette($mat-deep-orange);
+$blog-warn: mat-palette($mat-red);
+
+$blog-theme: mat-light-theme($blog-primary, $blog-accent, $blog-warn);
+
+@include angular-material-theme($blog-theme);
+
