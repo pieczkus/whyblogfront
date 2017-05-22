@@ -1,5 +1,5 @@
 <div class="editor">
-  <p>Zostaw wiadomość. Twój email nie będzie opublikowany.</p>
+  <p class="header">Zostaw wiadomość. Twój email nie będzie opublikowany.</p>
   <form [formGroup]="commentForm" *ngIf="active" (ngSubmit)="onSubmit()" autocomplete="off">
     <table class="full-width">
       <tbody>
@@ -7,16 +7,16 @@
         <td>
           <md-input-container class="comment-input">
             <textarea mdInput mdTextareaAutosize mdAutosizeMinRows="6"
-                      formControlName="content" placeholder="Komantarz" required></textarea>
-            <!--<md-hint *ngIf="formErrors.text" align="end">{{formErrors.text}}</md-hint>-->
+                      formControlName="content" placeholder="Komentarz" required></textarea>
+            <md-hint *ngIf="formErrors.content" align="end">{{formErrors.content}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput formControlName="authorName" placeholder="Twój Pseudonim" required>
-            <!--<md-hint *ngIf="formErrors.name" align="end">{{formErrors.name}}</md-hint>-->
+            <input mdInput formControlName="authorName" placeholder="Pseudonim" required>
+            <md-hint *ngIf="formErrors.authorName" align="end">{{formErrors.authorName}}</md-hint>
           </md-input-container>
         </td>
       </tr>
@@ -25,7 +25,7 @@
           <md-input-container class="full-width">
             <input type="email" mdInput formControlName="email" placeholder="Adres Email"
                    required email>
-            <!--<md-hint *ngIf="formErrors.email" align="end">{{formErrors.email}}</md-hint>-->
+            <md-hint *ngIf="formErrors.email" align="end">{{formErrors.email}}</md-hint>
           </md-input-container>
         </td>
       </tr>
