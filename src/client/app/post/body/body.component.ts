@@ -41,13 +41,13 @@ export class BodyComponent implements OnChanges {
   }
 
   resolveComponent(name: string): Type<any> {
-    if (name === 'ParagraphComponent') {
+    if (name === 'Paragraph') {
       return ParagraphComponent;
-    } else if (name === 'BreakoutComponent') {
+    } else if (name === 'Breakout') {
       return BreakoutComponent;
-    } else if (name === 'QuoteComponent') {
+    } else if (name === 'Quote') {
       return QuoteComponent;
-    } else if (name === 'YoutubeComponent') {
+    } else if (name === 'YouTube') {
       return YoutubeComponent;
     } else {
       return ParagraphComponent;
