@@ -56,3 +56,14 @@
   box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.18), 0 0 15px 0 rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-out 0s;
 }
+
+.sidebar-wrap {
+  color: #b2b5b9;
+  padding: 10px;
+}
+
+.footer {
+  font-size: 11px;
+  padding: 10px;
+  color: #b2b5b9;
+}
