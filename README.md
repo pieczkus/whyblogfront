@@ -102,6 +102,24 @@ Your project will be compiled ahead of time (AOT), and then the resulting bundle
 - UMD modules result in code that cannot be properly optimized. For best results, prefer ES6 modules whenever possible. This includes third-party dependencies: if one is published in both UMD and ES6 modules, go with the ES6 modules version.
 - During a production build, CommonJs modules will be automatically converted to ES6 modules. This means you can use them and/or require dependencies that use them without any issues.
 
+# Internationalization
+
+Put `i18n` attribute to your html tag to mark it for translation, more information here: https://angular.io/docs/ts/latest/cookbook/i18n.html
+
+## Create a translation source file
+
+```bash
+# Your translation file will be generated here `dist/locale`
+$ npm run i18n
+```
+
+## Production build with your language
+
+```bash
+# Build prod app with the language file `dist/locale/messages.en.xlf`
+$ npm run build.prod.rollup.aot -- --lang en
+```
+
 # Dockerization
 
 The application provides full Docker support. You can use it for both development as well as production builds and deployments.
@@ -258,8 +276,8 @@ An [advanced option to this seed exists here](https://github.com/NathanWalker/an
     - When using the seed, be sure to change your `write_key` [here](https://github.com/NathanWalker/angular-seed-advanced/blob/master/src/client/index.html#L24)
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
-- [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
-- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#electron-app).
+- [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps.
+- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux).
 
 You may use it to learn how to extend this seed for your own use cases or use the advanced seed if your project needs those features.
 
