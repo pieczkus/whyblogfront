@@ -18,7 +18,6 @@ export class CommentService {
   }
 
   addComment(comment: PostComment): Observable<PostComment> {
-    console.log('new Comment ' + comment);
     return this.http.post(Config.COMMENT_API + '/', JSON.stringify(comment))
       .catch(this.handleError);
   }

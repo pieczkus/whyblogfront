@@ -22,15 +22,11 @@ export class PostNavComponent implements OnChanges {
       this.nextPostTitle = null;
       this.prevPostTitle = null;
       this.postService.getNextPost(this.publishedOn).subscribe(post => {
-          this.nextPostTitle = post.title;
-        },
-        error => console.log('nav' + error),
-        () => console.log('yaya'));
+        this.nextPostTitle = post.title;
+      });
       this.postService.getPrevPost(this.publishedOn).subscribe(post => {
-          this.prevPostTitle = post.title;
-        },
-        error => console.log('nav' + error),
-        () => console.log('yoyo'));
+        this.prevPostTitle = post.title;
+      });
     }
   }
 

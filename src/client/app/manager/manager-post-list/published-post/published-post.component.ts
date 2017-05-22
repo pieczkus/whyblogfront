@@ -17,7 +17,6 @@ export class PublishedPostComponent {
 
   pinPost() {
     this.postService.pinPost(this.post.title).subscribe(res => {
-      console.log('post pinned?');
     });
   }
 

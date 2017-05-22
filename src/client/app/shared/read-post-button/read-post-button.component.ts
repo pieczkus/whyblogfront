@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ReadPostButtonComponent {
 
-  public static readonly POST_PREFIX = 'post/';
+  public static readonly POST_PREFIX = '/post/';
 
   @Input() postTitle: string;
   @Input() timeToRead: string;
