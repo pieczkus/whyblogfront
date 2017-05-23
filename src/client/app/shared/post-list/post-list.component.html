@@ -1,7 +1,7 @@
 <md-grid-list cols="3" gutterSize="0">
   <md-grid-tile
     *ngFor="let p of staggeringPosts"
-    [colspan]="3"
+    [colspan]="colspan"
     [rowspan]="1"
     class="post"
     (@flyInOut.done)="doNext()" [@flyInOut]="'in'">

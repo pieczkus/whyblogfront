@@ -11,7 +11,7 @@
   <wb-post-body [components]="post.body"></wb-post-body>
   <wb-post-tags-component [tags]="post.tags"></wb-post-tags-component>
   <wb-comments [postId]="post.postId"></wb-comments>
-  <wb-post-list *ngIf="!loading" [posts]="relatedPosts"></wb-post-list>
+  <wb-post-list [colspan]="1"></wb-post-list>
   <wb-post-nav-component [publishedOn]="post.publishedOn"></wb-post-nav-component>
 
 </div>

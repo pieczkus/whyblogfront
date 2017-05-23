@@ -3,6 +3,7 @@ import { Post } from '../shared/post/post';
 import { PostService } from '../shared/post/post.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { PostListComponent } from '../shared/post-list/post-list.component';
 
 @Component({
   moduleId: module.id,
@@ -24,6 +25,8 @@ export class PostComponent implements OnInit {
   errorMessage: string;
   state: string = 'inactive';
   relatedPosts: Post[] = [];
+  @ViewChild(PostListComponent)
+  private postList: PostListComponent;
 
   constructor(public postService: PostService, private route: ActivatedRoute) {
   }
@@ -38,7 +41,9 @@ export class PostComponent implements OnInit {
   loadPost(title: string) {
     this.postService.getPost(title).subscribe(post => {
         this.post = post;
-        this.loadRelatedPosts();
+        setTimeout(() => {
+          this.loadRelatedPosts();
+        }, 200);
       },
       error => this.errorMessage = error,
       () => {
@@ -50,11 +55,12 @@ export class PostComponent implements OnInit {
   }
 
   loadRelatedPosts(): void {
-    for (let r in this.post.relatedPosts) {
+    for (let r of this.post.relatedPosts) {
       this.postService.getPostById(r).subscribe(rp => {
         this.relatedPosts.push(rp);
       });
     }
+    this.postList.staggeringPosts = this.relatedPosts;
   }
 
 }

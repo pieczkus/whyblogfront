@@ -54,7 +54,9 @@ export class PostService {
   }
 
   getPostById(postId: string): Observable<Post> {
-    return this.getPost('');
+    return this.http.get(Config.POST_API + '/' + postId)
+      .map(res => <Post> res.json())
+      .catch(this.handleError);
   }
 
   getNextPost(publishedOn: number): Observable<Post> {

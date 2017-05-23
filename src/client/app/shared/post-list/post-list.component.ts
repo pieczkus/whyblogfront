@@ -30,6 +30,7 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 export class PostListComponent {
 
   @Input() posts: Post[] = [];
+  @Input() colspan: number;
   staggeringPosts: Post[] = [];
   next: number = 0;
 
