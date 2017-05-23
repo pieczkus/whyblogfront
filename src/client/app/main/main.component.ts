@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Post } from '../shared/post/post';
 import { PostService } from '../shared/post/post.service';
 import { PostListComponent } from '../shared/post-list/post-list.component';
 

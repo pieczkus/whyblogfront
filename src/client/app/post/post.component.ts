@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Post } from '../shared/post/post';
-import { PostService } from '../shared/post/post.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Post, PostService } from '../shared/post/index';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { PostListComponent } from '../shared/post-list/post-list.component';
@@ -60,6 +59,7 @@ export class PostComponent implements OnInit {
         this.relatedPosts.push(rp);
       });
     }
+    this.postList.staggeringPosts = [];
     this.postList.staggeringPosts = this.relatedPosts;
   }
 

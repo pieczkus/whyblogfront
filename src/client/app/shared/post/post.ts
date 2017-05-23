@@ -13,4 +13,5 @@ export class Post {
   timeToRead: string;
   tags: string[];
   relatedPosts: string[];
+  pinned: boolean;
 }

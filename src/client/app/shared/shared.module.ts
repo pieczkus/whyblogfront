@@ -16,7 +16,6 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthGuard } from './guards/auth.guard';
 import { PostComponentService } from './component/post-component.service';
-import { ProfileService } from './profile/profile.service';
 import { CommentService } from './comment/comment.service';
 import { HttpClient } from './http/http.client';
 
@@ -36,7 +35,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, ProfileService, CommentService, HttpClient]
+      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, CommentService, HttpClient]
     };
   }
 }

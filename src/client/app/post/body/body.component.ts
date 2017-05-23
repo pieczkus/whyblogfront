@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild
 } from '@angular/core';
 import { BodyComponentDirective } from './body-component.directive';

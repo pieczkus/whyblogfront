@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../../shared/post/post';
-import { PostService } from '../../shared/post/post.service';
+import { Component, OnInit } from '@angular/core';
+import { Post, PostService } from '../../shared/post/index';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
