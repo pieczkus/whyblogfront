@@ -54,12 +54,12 @@ export class PostComponent implements OnInit {
   }
 
   loadRelatedPosts(): void {
+    this.relatedPosts = [];
     for (let r of this.post.relatedPosts) {
       this.postService.getPostById(r).subscribe(rp => {
         this.relatedPosts.push(rp);
       });
     }
-    this.postList.staggeringPosts = [];
     this.postList.staggeringPosts = this.relatedPosts;
   }
 

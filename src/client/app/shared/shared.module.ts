@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MaterialModule } from '@angular/material';
 import { PostService } from './post/post.service';
@@ -25,9 +23,9 @@ import { HttpClient } from './http/http.client';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
-  declarations: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
+  declarations: [SidenavComponent, PostListComponent, PostTileComponent,
     ReadPostButtonComponent, LoginComponent],
-  exports: [ToolbarComponent, NavbarComponent, SidenavComponent, PostListComponent, PostTileComponent,
+  exports: [SidenavComponent, PostListComponent, PostTileComponent,
     ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule, BrowserAnimationsModule,
     LoginComponent]
 })
