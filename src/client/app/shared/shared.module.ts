@@ -16,6 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { PostComponentService } from './component/post-component.service';
 import { CommentService } from './comment/comment.service';
 import { HttpClient } from './http/http.client';
+import { LoaderComponent, LoaderService } from './loader/index';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -23,17 +24,17 @@ import { HttpClient } from './http/http.client';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
-  declarations: [SidenavComponent, PostListComponent, PostTileComponent,
+  declarations: [SidenavComponent, PostListComponent, PostTileComponent, LoaderComponent,
     ReadPostButtonComponent, LoginComponent],
   exports: [SidenavComponent, PostListComponent, PostTileComponent,
     ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule, BrowserAnimationsModule,
-    LoginComponent]
+    LoginComponent, LoaderComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, CommentService, HttpClient]
+      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, CommentService, HttpClient, LoaderService]
     };
   }
 }

@@ -3,19 +3,13 @@ import { Post, PostService } from '../shared/post/index';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { PostListComponent } from '../shared/post-list/post-list.component';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   moduleId: module.id,
   selector: 'wb-post',
   templateUrl: 'post.component.html',
   styleUrls: ['post.component.css'],
-  animations: [
-    trigger('coverState', [
-      state('inactive', style({opacity: 0})),
-      state('active', style({opacity: 1})),
-      transition('* => *', animate('.5s'))
-    ])
-  ]
 })
 export class PostComponent implements OnInit {
 
@@ -24,10 +18,8 @@ export class PostComponent implements OnInit {
   errorMessage: string;
   state: string = 'inactive';
   relatedPosts: Post[] = [];
-  @ViewChild(PostListComponent)
-  private postList: PostListComponent;
 
-  constructor(public postService: PostService, private route: ActivatedRoute) {
+  constructor(public postService: PostService, private route: ActivatedRoute, private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
@@ -46,10 +38,11 @@ export class PostComponent implements OnInit {
       },
       error => this.errorMessage = error,
       () => {
-        this.loading = false;
         setTimeout(() => {
           this.state = 'active';
-        }, 200);
+          this.loaderService.hide();
+          this.loading = false;
+        }, 400);
       });
   }
 
@@ -60,7 +53,6 @@ export class PostComponent implements OnInit {
         this.relatedPosts.push(rp);
       });
     }
-    this.postList.staggeringPosts = this.relatedPosts;
   }
 
 }

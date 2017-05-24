@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Post } from '../post/post';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { AnimationState, LoaderService } from '../loader/index';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   moduleId: module.id,
@@ -27,12 +29,27 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
     ])
   ]
 })
-export class PostListComponent {
+export class PostListComponent implements OnInit, OnDestroy {
 
   @Input() posts: Post[] = [];
   @Input() colspan: number;
   staggeringPosts: Post[] = [];
   next: number = 0;
+  private subscription: Subscription;
+
+  constructor(private loaderService: LoaderService) {
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.loaderService.animationState
+      .subscribe((state: AnimationState) => {
+        this.doNext();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   doNext(): void {
     if (this.next < this.posts.length) {

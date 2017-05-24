@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Post } from '../shared/post/post';
-import { PostService } from '../shared/post/post.service';
-import { PostListComponent } from '../shared/post-list/post-list.component';
+import { PostService, Post } from '../shared/post/index';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   moduleId: module.id,
@@ -14,10 +13,9 @@ export class TagComponent implements OnInit {
 
   loading: boolean;
   errorMessage: string;
-  @ViewChild(PostListComponent)
-  private postList: PostListComponent;
+  posts: Post[] = [];
 
-  constructor(public postService: PostService, private route: ActivatedRoute) {
+  constructor(public postService: PostService, private route: ActivatedRoute, private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
@@ -29,12 +27,14 @@ export class TagComponent implements OnInit {
   loadTaggedPosts(tag: string): void {
     this.loading = true;
     this.postService.getPostsByTag(tag).subscribe(posts => {
-        this.postList.posts = posts;
-        this.postList.doNext();
+        this.posts = posts;
       },
       error => this.errorMessage = error,
       () => {
         this.loading = false;
+        setTimeout(() => {
+          this.loaderService.hide();
+        }, 400);
       });
   }
 

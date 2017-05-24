@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { PostService } from '../shared/post/post.service';
-import { PostListComponent } from '../shared/post-list/post-list.component';
+import { Component, OnInit } from '@angular/core';
+import { PostService, Post } from '../shared/post/index';
+import { LoaderService } from '../shared/loader/loader.service';
 
 @Component({
   moduleId: module.id,
@@ -14,21 +14,22 @@ export class MainComponent implements OnInit {
   errorMessage: string;
   offset: number = 0;
   limit: number = 6;
-  @ViewChild(PostListComponent)
-  private postList: PostListComponent;
+  posts: Post[] = [];
 
-  constructor(public postService: PostService) {
+  constructor(public postService: PostService, private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
     this.loading = true;
     this.postService.getPosts(this.offset, this.limit).subscribe(posts => {
-        this.postList.posts = posts;
-        this.postList.doNext();
+        this.posts = posts;
       },
       error => this.errorMessage = error,
       () => {
         this.loading = false;
+        setTimeout(() => {
+          this.loaderService.hide();
+        }, 400);
       });
   }
 
