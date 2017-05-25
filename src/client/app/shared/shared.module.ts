@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { MaterialModule } from '@angular/material';
 import { PostService } from './post/post.service';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostTileComponent } from './post-list/post-tile/post-tile.component';
@@ -17,17 +16,14 @@ import { PostComponentService } from './component/post-component.service';
 import { CommentService } from './comment/comment.service';
 import { HttpClient } from './http/http.client';
 import { LoaderComponent, LoaderService } from './loader/index';
-
-/**
- * Do not specify providers for modules that might be imported by a lazy loaded module.
- */
+import { BlogMaterialModule } from './blog-material.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, BlogMaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
   declarations: [SidenavComponent, PostListComponent, PostTileComponent, LoaderComponent,
     ReadPostButtonComponent, LoginComponent],
-  exports: [SidenavComponent, PostListComponent, PostTileComponent,
-    ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, MaterialModule, BrowserAnimationsModule,
+  exports: [BlogMaterialModule, SidenavComponent, PostListComponent, PostTileComponent,
+    ReadPostButtonComponent, CommonModule, FormsModule, RouterModule, BrowserAnimationsModule,
     LoginComponent, LoaderComponent]
 })
 export class SharedModule {

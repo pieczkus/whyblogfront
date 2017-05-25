@@ -20,6 +20,7 @@ import {
 } from '../post/index';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagComponent } from '../tag/tag.component';
+import { BlogMaterialModule } from '../shared/blog-material.module';
 
 @NgModule({
   imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
@@ -27,7 +28,7 @@ import { TagComponent } from '../tag/tag.component';
     BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent,
     PostTagsComponent, PostTagLinkComponent, CommentsComponent, CommentComponent, CommentEditorComponent,
     TagComponent],
-  exports: [MainComponent],
+  exports: [MainComponent, BlogMaterialModule],
   entryComponents: [ParagraphComponent, BreakoutComponent, QuoteComponent, YoutubeComponent]
 })
 export class MainModule {
