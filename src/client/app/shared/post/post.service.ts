@@ -13,16 +13,14 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  getPinnedPost(): Observable<Post> {
-    return this.http.get(Config.POST_API + '/pinned')
-      .map(res => <Post> res.json())
-      .catch(this.handleError);
-  }
-
   getPosts(offset: number, limit: number): Observable<Post[]> {
-    return this.http.get(Config.POST_API + '/')
-      .map(res => <Post[]> res.json())
-      .catch(this.handleError);
+    let pinned = this.http.get(Config.POST_API + '/pinned').map(res => <Post>res.json());
+    let published = this.http.get(Config.POST_API + '/').map(res => <Post[]>res.json());
+
+    return Observable.forkJoin(pinned, published).map(res => {
+      res[1].unshift(res[0]);
+      return res[1];
+    }).catch(this.handleError);
   }
 
   getNotPublishedPosts(): Observable<Post[]> {
