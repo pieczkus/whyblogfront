@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { LoaderService } from '../loader/loader.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private authenticationService: AuthenticationService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private loaderService: LoaderService) {
   }
 
   ngOnInit() {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
       'email': [null, Validators.required],
       'password': [null, Validators.required],
     });
+    this.loaderService.hide();
   }
 
   onSubmit() {

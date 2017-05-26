@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../shared/post/post.service';
 import { Post } from '../../shared/post/post';
+import { Observable } from 'rxjs/Observable';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   moduleId: module.id,
@@ -14,44 +16,27 @@ export class ManagerPostListComponent implements OnInit {
   loading = false;
   errorMessage: string;
   notPublishedPosts: Post[];
-  notPublishedLoading = false;
-  notPublishedErrorMessage: string;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
-    this.loadPosts();
-    this.loadNotPublishedPosts();
-  }
-
-  publish(title: string) {
-    this.postService.publishPost(title).subscribe(res => {
-      this.loadPosts();
-      this.loadNotPublishedPosts();
-    });
-  }
-
-  private loadPosts() {
-    this.loading = true;
-    this.postService.getPosts(0, 0).subscribe(posts => {
-        this.posts = posts;
+    Observable.forkJoin(this.postService.getPosts(0, 0), this.postService.getNotPublishedPosts()).subscribe(res => {
+        console.log(res[0]);
+        console.log(res[1]);
+        this.posts = res[0];
+        this.notPublishedPosts = res[1];
       },
-      error => this.errorMessage = error,
+      err => this.errorMessage = err,
       () => {
+        this.loaderService.hide();
         this.loading = false;
       });
   }
 
-  private loadNotPublishedPosts() {
-    this.notPublishedLoading = true;
-    this.postService.getNotPublishedPosts().subscribe(posts => {
-        this.notPublishedPosts = posts;
-      },
-      error => this.notPublishedErrorMessage = error,
-      () => {
-        this.notPublishedLoading = false;
-      });
+  publish(title: string) {
+    this.postService.publishPost(title).subscribe(res => {
+    });
   }
 
 
