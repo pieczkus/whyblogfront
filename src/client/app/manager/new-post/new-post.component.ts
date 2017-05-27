@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ComponentListComponent } from './component-list/component-list.component';
-import { Post } from '../../shared/post/post';
-import { PostService } from '../../shared/post/post.service';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ComponentListComponent} from './component-list/component-list.component';
+import {Post} from '../../shared/post/post';
+import {PostService} from '../../shared/post/post.service';
+import {LoaderService} from '../../shared/loader/loader.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -16,6 +16,41 @@ export class NewPostComponent implements OnInit {
   post: Post;
   tags: string;
   postForm: FormGroup;
+  loading: boolean;
+
+  formErrors: any = {
+    'title': '',
+    'coverUrl': '',
+    'author': '',
+    'metaTitle': '',
+    'metaKeywords': '',
+    'metaDescription': '',
+    'tags': ''
+  };
+
+  validationMessages: any = {
+    'title': {
+      'required': 'Tytuł jest wymagany'
+    },
+    'coveryUrl': {
+      'required': 'Obrazek tytułowy jest wymagany'
+    },
+    'author': {
+      'required': 'Autor jest wymagany'
+    },
+    'metaTitle': {
+      'required': 'Meta tytuł jest wymagany'
+    },
+    'metaKeywords': {
+      'required': 'Meta keywords jest wymagany'
+    },
+    'metaDescription': {
+      'required': 'Meta opis jest wymagany'
+    },
+    'tags': {
+      'required': 'Tagi jest wymagany'
+    }
+  };
 
   @ViewChild(ComponentListComponent)
   private componentList: ComponentListComponent;
@@ -59,6 +94,10 @@ export class NewPostComponent implements OnInit {
     }
   }
 
+  onSubmit() {
+    this.loading = true;
+
+  }
 
   savePost() {
     if (this.validateFields()) {

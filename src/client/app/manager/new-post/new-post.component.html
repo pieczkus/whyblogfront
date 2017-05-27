@@ -1,45 +1,52 @@
 <wb-manager-toolbar></wb-manager-toolbar>
 <div class="manager">
-  <form class="new-post">
+  <form class="new-post" (ngSubmit)="onSubmit()" autocomplete="off">
     <table class="full-width">
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Tytuł" [(ngModel)]="post.title" name="title">
+            <input mdInput placeholder="Tytuł" formControlName="title" required>
+            <md-hint *ngIf="formErrors.title" align="end">{{formErrors.title}}</md-hint>
           </md-input-container>
         </td>
         <td colspan="2">
           <md-input-container class="full-width">
-            <input type="url" mdInput placeholder="Link do obrazka tytułowego" [(ngModel)]="post.coverUrl" name="coverUrl">
+            <input type="url" mdInput placeholder="Link do obrazka tytułowego" formControlName="coverUrl" required>
+            <md-hint *ngIf="formErrors.coverUrl" align="end">{{formErrors.coverUrl}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Autor" [(ngModel)]="post.author" name="author">
+            <input mdInput placeholder="Autor" formControlName="author" required>
+            <md-hint *ngIf="formErrors.author" align="end">{{formErrors.author}}</md-hint>
           </md-input-container>
         </td>
-        <td  colspan="2">
+        <td colspan="2">
           <md-input-container class="full-width">
-            <input mdInput placeholder="Tagi" [(ngModel)]="tags" name="tags">
+            <input mdInput placeholder="Tagi" formControlName="tags" required>
+            <md-hint *ngIf="formErrors.tags" align="end">{{formErrors.tags}}</md-hint>
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Title" [(ngModel)]="post.metaTitle" name="metatitle">
+            <input mdInput placeholder="Meta Title" formControlName="metaTitle" required>
+            <md-hint *ngIf="formErrors.metaTitle" align="end">{{formErrors.metaTitle}}</md-hint>
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Keywords" [(ngModel)]="post.metaKeywords" name="metakewords">
+            <input mdInput placeholder="Meta Keywords" formControlName="metaKewords" required>
+            <md-hint *ngIf="formErrors.metaKeywords" align="end">{{formErrors.metaKeywords}}</md-hint>
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Description" [(ngModel)]="post.metaDescription" name="metadescription">
+            <input mdInput placeholder="Meta Description" formControlName="metaDescription" required>
+            <md-hint *ngIf="formErrors.metaDescription" align="end">{{formErrors.metaDescription}}</md-hint>
           </md-input-container>
         </td>
       </tr>
@@ -49,6 +56,13 @@
 
     <wb-component-list></wb-component-list>
 
-    <button md-button (click)="savePost()">Dodaj</button>
+    <div *ngIf="loading; else elseBlock">
+      <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+    </div>
+    <ng-template #elseBlock>
+      <button type="submit" md-raised-button [disabled]="!postForm.valid"
+              color="primary">Dodaj Post
+      </button>
+    </ng-template>
   </form>
 </div>
