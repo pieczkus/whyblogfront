@@ -22,8 +22,6 @@ export class ManagerPostListComponent implements OnInit {
 
   ngOnInit(): void {
     Observable.forkJoin(this.postService.getPosts(0, 0), this.postService.getNotPublishedPosts()).subscribe(res => {
-        console.log(res[0]);
-        console.log(res[1]);
         this.posts = res[0];
         this.notPublishedPosts = res[1];
       },
