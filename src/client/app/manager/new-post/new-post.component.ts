@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ComponentListComponent} from './component-list/component-list.component';
-import {Post} from '../../shared/post/post';
-import {PostService} from '../../shared/post/post.service';
-import {LoaderService} from '../../shared/loader/loader.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ComponentListComponent } from './component-list/component-list.component';
+import { Post } from '../../shared/post/post';
+import { PostService } from '../../shared/post/post.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -14,9 +15,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class NewPostComponent implements OnInit {
 
   post: Post;
-  tags: string;
   postForm: FormGroup;
   loading: boolean;
+  errorMessage: string;
 
   formErrors: any = {
     'title': '',
@@ -57,11 +58,13 @@ export class NewPostComponent implements OnInit {
 
   constructor(private postservice: PostService,
               private loaderService: LoaderService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.post = new Post();
+    this.buildForm();
     this.loaderService.hide();
   }
 
@@ -69,7 +72,11 @@ export class NewPostComponent implements OnInit {
     this.postForm = this.fb.group({
       'title': [this.post.title, [Validators.required, Validators.minLength(5)]],
       'coverUrl': [this.post.coverUrl, Validators.required],
-      'author': [this.post.author, [Validators.required, Validators.minLength(2)]]
+      'author': [this.post.author, [Validators.required, Validators.minLength(2)]],
+      'metaTitle': [this.post.coverUrl, Validators.required],
+      'metaKeywords': [this.post.coverUrl, Validators.required],
+      'metaDescription': [this.post.coverUrl, Validators.required],
+      'tags': [this.post.coverUrl, Validators.required]
     });
 
     this.postForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -96,22 +103,24 @@ export class NewPostComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-
-  }
-
-  savePost() {
-    if (this.validateFields()) {
+    if (this.componentsValid()) {
+      let tags = this.postForm.value.tags.split('|');
+      this.post = this.postForm.value;
       let bodyComponents = [];
       for (let p of this.componentList.components) {
         bodyComponents.push(p.toBodyComponent());
       }
       this.post.body = bodyComponents;
-      this.post.tags = this.tags.split('|');
+      this.post.tags = tags;
     }
-    this.postservice.createPost(this.post).subscribe(resp => console.log('post created?'));
+    this.postservice.createPost(this.post).subscribe(
+      resp => this.router.navigate(['/manager']),
+      error => this.errorMessage = error,
+      () => this.loading = false
+    );
   }
 
-  validateFields(): boolean {
+  componentsValid(): boolean {
     for (let comp of this.componentList.components) {
       for (let field of comp.fields) {
         if (!field.value || field.value === '') {

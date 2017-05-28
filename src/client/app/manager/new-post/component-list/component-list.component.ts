@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostComponentService } from '../../../shared/component/post-component.service';
 import { PostComponent } from './post-component';
 

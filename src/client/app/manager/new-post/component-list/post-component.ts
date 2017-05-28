@@ -3,12 +3,10 @@ import { PostBodyComponent } from '../../../shared/post/post-body-component';
 
 export class PostComponent {
   name: string;
-  component: string;
   fields: PostComponentField[];
 
-  constructor(name: string, component: string, fields: PostComponentField[]) {
+  constructor(name: string, fields: PostComponentField[]) {
     this.name = name;
-    this.component = component;
     this.fields = fields;
   }
 
@@ -17,7 +15,7 @@ export class PostComponent {
     for (let field of this.fields) {
       clonedFields.push(field.clone());
     }
-    return new (this.constructor as typeof PostComponent)(this.name, this.component, clonedFields) as this;
+    return new (this.constructor as typeof PostComponent)(this.name, clonedFields) as this;
   }
 
   toBodyComponent(): PostBodyComponent {

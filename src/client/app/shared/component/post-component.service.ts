@@ -6,10 +6,10 @@ import { PostComponentField } from '../../manager/new-post/component-list/post-c
 export class PostComponentService {
 
   components: PostComponent[] = [
-    new PostComponent('Paragraf', '', [new PostComponentField('Text', 'text')]),
-    new PostComponent('Breakout', '', [new PostComponentField('Url', 'url')]),
-    new PostComponent('YouTube', '', [new PostComponentField('Url', 'url')]),
-    new PostComponent('Quote', '', [new PostComponentField('Author', 'text'), new PostComponentField('Quote', 'text')])
+    new PostComponent('Paragraf', [new PostComponentField('Text', 'text')]),
+    new PostComponent('Breakout', [new PostComponentField('Url', 'url')]),
+    new PostComponent('YouTube', [new PostComponentField('Url', 'url')]),
+    new PostComponent('Quote', [new PostComponentField('Author', 'text'), new PostComponentField('Quote', 'text')])
   ];
 
   getAvailableComponents(): PostComponent[] {
