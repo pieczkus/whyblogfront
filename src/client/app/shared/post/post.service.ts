@@ -18,7 +18,9 @@ export class PostService {
     let published = this.http.get(Config.POST_API + '/').map(res => <Post[]>res.json());
 
     return Observable.forkJoin(pinned, published).map(res => {
-      res[1].unshift(res[0]);
+      if (res[0].title && res[0].title !== '') {
+        res[1].unshift(res[0]);
+      }
       return res[1];
     }).catch(this.handleError);
   }

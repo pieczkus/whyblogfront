@@ -2,10 +2,10 @@ import { EnvConfig } from './env-config.interface';
 
 const ProdConfig: EnvConfig = {
   ENV: 'PROD',
-  AUTH_API: 'http://pieczki.dev/api/auth',
-  POST_API: 'http://pieczki.dev/api/posts',
-  COMMENT_API: 'http://pieczki.dev/api/comments',
-  API_KEY: 'c1700e46-ddb6-407f-9f99-1d0706271cb7'
+  AUTH_API: '/api/auth',
+  POST_API: '/api/posts',
+  COMMENT_API: '/api/comments',
+  API_KEY: 'ea9a28e6-9c83-4fc7-8bc2-16e061060eae'
 };
 
 export = ProdConfig;

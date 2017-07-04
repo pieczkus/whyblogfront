@@ -17,6 +17,7 @@ import { CommentService } from './comment/comment.service';
 import { HttpClient } from './http/http.client';
 import { LoaderComponent, LoaderService } from './loader/index';
 import { BlogMaterialModule } from './blog-material.module';
+import { SeoService } from './seo/seo.service';
 
 @NgModule({
   imports: [CommonModule, RouterModule, BlogMaterialModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule],
@@ -30,7 +31,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, CommentService, HttpClient, LoaderService]
+      providers: [PostService, AuthenticationService, AuthGuard, PostComponentService, CommentService, HttpClient, LoaderService, SeoService]
     };
   }
 }

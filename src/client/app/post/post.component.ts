@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Post, PostService } from '../shared/post/index';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
-import { PostListComponent } from '../shared/post-list/post-list.component';
 import { LoaderService } from '../shared/loader/loader.service';
+import { SeoService } from '../shared/seo/seo.service';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +18,8 @@ export class PostComponent implements OnInit {
   state: string = 'inactive';
   relatedPosts: Post[] = [];
 
-  constructor(public postService: PostService, private route: ActivatedRoute, private loaderService: LoaderService) {
+  constructor(public postService: PostService, private route: ActivatedRoute, private loaderService: LoaderService,
+              private seoService: SeoService) {
   }
 
   ngOnInit(): void {
@@ -38,6 +38,8 @@ export class PostComponent implements OnInit {
       },
       error => this.errorMessage = error,
       () => {
+        this.seoService.setTitle(this.post.metaTitle);
+        this.seoService.setMetaDescription(this.post.metaDescription);
         setTimeout(() => {
           this.state = 'active';
           this.loaderService.hide();
