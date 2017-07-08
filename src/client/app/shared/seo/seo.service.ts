@@ -1,82 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Injectable()
 export class SeoService {
-  /**
-   * Angular 2 Title Service
-   */
-  private titleService: Title;
-  /**
-   * <head> Element of the HTML document
-   */
-  private headElement: HTMLElement;
-  /**
-   * <head> Element of the HTML document
-   */
-  private metaDescription: HTMLElement;
-  /**
-   * <head> Element of the HTML document
-   */
-  private robots: HTMLElement;
-  private DOM: any;
 
-  /**
-   * Inject the Angular 2 Title Service
-   * @param titleService
-   */
-  constructor(titleService: Title) {
-    this.titleService = titleService;
-    this.DOM = getDOM();
-
-    /**
-     * get the <head> Element
-     * @type {any}
-     */
-    this.headElement = this.DOM.query('head');
-    this.metaDescription = this.getOrCreateMetaElement('description');
-    this.robots = this.getOrCreateMetaElement('robots');
+  constructor(private title: Title, private meta: Meta) {
   }
 
-  public getTitle(): string {
-    return this.titleService.getTitle();
-  }
-
-  public setTitle(newTitle: string) {
-    this.titleService.setTitle(newTitle);
-  }
-
-  public getMetaDescription(): string {
-    return this.metaDescription.getAttribute('content');
+  public setTitle(title: string) {
+    this.title.setTitle(title);
   }
 
   public setMetaDescription(description: string) {
-    this.metaDescription.setAttribute('content', description);
+    let tag = {name: 'description', content: description};
+    let attributeSelector: string = 'name="description"';
+    this.meta.removeTag(attributeSelector);
+    this.meta.addTag(tag, false);
   }
 
-  public getMetaRobots(): string {
-    return this.robots.getAttribute('content');
+  public setMetaKeywords(keywords: string) {
+    let tag = {name: 'keywords', content: keywords};
+    let attributeSelector: string = 'name="keywords"';
+    this.meta.removeTag(attributeSelector);
+    this.meta.addTag(tag, false);
   }
-
-  public setMetaRobots(robots: string) {
-    this.robots.setAttribute('content', robots);
-  }
-
-  /**
-   * get the HTML Element when it is in the markup, or create it.
-   * @param name
-   * @returns {HTMLElement}
-   */
-  private getOrCreateMetaElement(name: string): HTMLElement {
-    let el: HTMLElement;
-    el = this.DOM.query('meta[name=' + name + ']');
-    if (el === null) {
-      el = this.DOM.createElement('meta');
-      el.setAttribute('name', name);
-      this.headElement.appendChild(el);
-    }
-    return el;
-  }
-
 }

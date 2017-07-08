@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService, Post } from '../shared/post/index';
 import { LoaderService } from '../shared/loader/loader.service';
+import { SeoService } from '../shared/seo/seo.service';
 
 @Component({
   moduleId: module.id,

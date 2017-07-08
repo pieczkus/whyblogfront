@@ -40,6 +40,7 @@ export class PostComponent implements OnInit {
       () => {
         this.seoService.setTitle(this.post.metaTitle);
         this.seoService.setMetaDescription(this.post.metaDescription);
+        this.seoService.setMetaKeywords(this.post.metaKeywords);
         setTimeout(() => {
           this.state = 'active';
           this.loaderService.hide();
