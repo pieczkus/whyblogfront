@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../shared/post/post.service';
 import { Post } from '../../shared/post/post';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
