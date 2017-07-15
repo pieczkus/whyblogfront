@@ -95,6 +95,8 @@ services:
       - pieczkinetwork
     volumes:
       - /home/why/pieczki/assets/img/:/usr/share/nginx/html/prod/assets/img/
+      - /home/why/pieczki/sitemap.xml:/usr/share/nginx/html/prod/sitemap.xml
+      - /home/why/pieczki/robots.txt:/usr/share/nginx/html/prod/robots.txt
     deploy:
       placement:
         constraints:
