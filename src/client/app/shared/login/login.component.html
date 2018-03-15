@@ -1,25 +1,25 @@
-<md-card class="login-card">
-  <md-card-header>
-    <md-card-title>Login form</md-card-title>
-  </md-card-header>
-  <md-card-content>
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Login form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
-      <md-input-container>
-        <input mdInput placeholder="Adres Email" formControlName="email">
-      </md-input-container>
+      <mat-form-field>
+        <input matInput placeholder="Adres Email" formControlName="email">
+      </mat-form-field>
       <br/>
-      <md-input-container>
-        <input type="password" mdInput placeholder="Hasło" formControlName="password">
-      </md-input-container>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Hasło" formControlName="password">
+      </mat-form-field>
       <br/>
       <div class="progress-wrapper" [@spinnerVisibilityChanged]="state">
-        <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+        <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
       </div>
-      <div >
-        <button type="submit" md-raised-button [disabled]="!loginForm.valid || loading"
+      <div>
+        <button type="submit" mat-raised-button [disabled]="!loginForm.valid || loading"
                 color="primary">Login
         </button>
       </div>
     </form>
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>

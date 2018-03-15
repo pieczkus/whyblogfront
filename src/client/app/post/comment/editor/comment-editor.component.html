@@ -5,37 +5,37 @@
       <tbody>
       <tr>
         <td>
-          <md-input-container class="comment-input">
-            <textarea mdInput mdTextareaAutosize mdAutosizeMinRows="6"
+          <mat-form-field class="comment-input">
+            <textarea matInput matTextareaAutosize
                       formControlName="content" placeholder="Komentarz" required></textarea>
-            <md-hint *ngIf="formErrors.content" align="end">{{formErrors.content}}</md-hint>
-          </md-input-container>
+            <mat-hint *ngIf="formErrors.content" align="end">{{ formErrors.content }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput formControlName="authorName" placeholder="Pseudonim" required>
-            <md-hint *ngIf="formErrors.authorName" align="end">{{formErrors.authorName}}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput formControlName="authorName" placeholder="Pseudonim" required>
+            <mat-hint *ngIf="formErrors.authorName" align="end">{{ formErrors.authorName }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <input type="email" mdInput formControlName="email" placeholder="Adres Email"
+          <mat-form-field class="full-width">
+            <input type="email" matInput formControlName="email" placeholder="Adres Email"
                    required email>
-            <md-hint *ngIf="formErrors.email" align="end">{{formErrors.email}}</md-hint>
-          </md-input-container>
+            <mat-hint *ngIf="formErrors.email" align="end">{{ formErrors.email }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
       </tbody>
     </table>
     <div *ngIf="loading; else elseBlock">
-      <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+      <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
     </div>
     <ng-template #elseBlock>
-      <button type="submit" md-raised-button [disabled]="!commentForm.valid"
+      <button type="submit" mat-raised-button [disabled]="!commentForm.valid"
               color="primary">Dodaj Komentarz
       </button>
     </ng-template>

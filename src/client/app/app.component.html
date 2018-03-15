@@ -1,16 +1,16 @@
 <blog-loader></blog-loader>
-<md-sidenav-container>
-  <md-sidenav #sidenav>
-    <!-- sidenav content -->
-    <wb-sidenav (onClose)="sidenav.toggle()"></wb-sidenav>
-  </md-sidenav>
-  <!-- primary content -->
-  <div class="side-buttons">
-    <div class="animated-icon" (click)="sidenav.toggle()">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" (opened)="op()" (closed)="cl()">
+    <wb-sidenav (close)="sidenav.toggle()"></wb-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="side-buttons">
+      <div class="animated-icon" (click)="sidenav.toggle()">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </div>
     </div>
-  </div>
-  <router-outlet></router-outlet>
-</md-sidenav-container>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

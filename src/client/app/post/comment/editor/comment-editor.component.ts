@@ -13,11 +13,11 @@ export class CommentEditorComponent implements OnInit {
 
   @Input() postId: string;
   comment: PostComment = new PostComment();
-  submitted: boolean = false;
-  active: boolean = true;
+  submitted = false;
+  active = true;
   commentForm: FormGroup;
-  @Output() onCommentAdded = new EventEmitter();
-  loading: boolean = false;
+  @Output() commentAdded = new EventEmitter();
+  loading = false;
   errorMessage: string;
 
   formErrors: any = {
@@ -82,7 +82,7 @@ export class CommentEditorComponent implements OnInit {
     this.comment.referenceUuid = this.postId;
     this.comment.createdOn = (new Date()).getMilliseconds();
     this.commentService.addComment(this.comment).subscribe(comment => {
-        this.onCommentAdded.emit(this.comment);
+        this.commentAdded.emit(this.comment);
         this.comment = new PostComment();
 
         //form reset workaround

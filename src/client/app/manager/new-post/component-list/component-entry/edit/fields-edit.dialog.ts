@@ -1,8 +1,5 @@
-import {
-  AfterViewInit, Component, ComponentFactoryResolver, OnDestroy, ViewChild, Type,
-  AfterContentInit
-} from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { Component, ComponentFactoryResolver, ViewChild, Type, AfterContentInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { PostComponentField } from '../../post-component-field';
 import { InputComponent } from './input/input.component';
 import { InputDirective } from './input.directive';
@@ -19,7 +16,7 @@ export class EditFieldsDialogComponent implements AfterContentInit {
   fields: PostComponentField[] = [];
   @ViewChild(InputDirective) inputHost: InputDirective;
 
-  constructor(public dialogRef: MdDialogRef<EditFieldsDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<EditFieldsDialogComponent>,
               private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
@@ -29,14 +26,14 @@ export class EditFieldsDialogComponent implements AfterContentInit {
 
   loadComponent() {
 
-    let viewContainerRef = this.inputHost.viewContainerRef;
+    const viewContainerRef = this.inputHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let self = this;
+    const self = this;
     this.fields.forEach(function (f) {
-      let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
+      const componentFactory = self.componentFactoryResolver.resolveComponentFactory(
         self.resolveInputComponent(f.type));
-      let componentRef = viewContainerRef.createComponent(componentFactory);
+      const componentRef = viewContainerRef.createComponent(componentFactory);
       (<InputComponent>componentRef.instance).field = f;
     });
   }

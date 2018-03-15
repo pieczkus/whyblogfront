@@ -34,7 +34,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   @Input() posts: Post[] = [];
   @Input() colspan: number;
   staggeringPosts: Post[] = [];
-  next: number = 0;
+  next = 0;
   private subscription: Subscription;
 
   constructor(private loaderService: LoaderService) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post, PostService } from '../shared/post/index';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderService } from '../shared/loader/loader.service';
@@ -13,9 +13,9 @@ import { SeoService } from '../shared/seo/seo.service';
 export class PostComponent implements OnInit {
 
   post: Post;
-  loading: boolean = true;
+  loading = true;
   errorMessage: string;
-  state: string = 'inactive';
+  state = 'inactive';
   relatedPosts: Post[] = [];
 
   constructor(public postService: PostService, private route: ActivatedRoute, private loaderService: LoaderService,
@@ -51,7 +51,7 @@ export class PostComponent implements OnInit {
 
   loadRelatedPosts(): void {
     this.relatedPosts = [];
-    for (let r of this.post.relatedPosts) {
+    for (const r of this.post.relatedPosts) {
       this.postService.getPostById(r).subscribe(rp => {
         this.relatedPosts.push(rp);
       });

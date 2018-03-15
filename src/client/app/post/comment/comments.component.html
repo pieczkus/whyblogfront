@@ -3,17 +3,17 @@
     <span class="title">Komentarze</span>
     <button *ngIf="!loaded" md-button (click)="loadComments()" class="load-comments">Pokaż komentarze</button>
   </div>
-  <md-card class="comment-list">
-    <md-card-content>
+  <mat-card class="comment-list">
+    <mat-card-content>
       <div *ngIf="loading; else elseBlock">
-        <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+        <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
       </div>
       <ng-template #elseBlock>
-        <md-list *ngFor="let c of staggeringComments; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
+        <mat-list *ngFor="let c of staggeringComments; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
           <wb-comment [comment]="c"></wb-comment>
-        </md-list>
+        </mat-list>
       </ng-template>
-      <wb-comment-editor [postId]="postId" (onCommentAdded)="commentAdded($event)"></wb-comment-editor>
-    </md-card-content>
-  </md-card>
+      <wb-comment-editor [postId]="postId" (commentAdded)="commentAdded($event)"></wb-comment-editor>
+    </mat-card-content>
+  </mat-card>
 </div>

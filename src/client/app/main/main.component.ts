@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService, Post } from '../shared/post/index';
 import { LoaderService } from '../shared/loader/loader.service';
-import { SeoService } from '../shared/seo/seo.service';
 
 @Component({
   moduleId: module.id,
@@ -13,14 +12,18 @@ export class MainComponent implements OnInit {
 
   loading: boolean;
   errorMessage: string;
-  offset: number = 0;
-  limit: number = 6;
+  offset = 0;
+  limit = 6;
   posts: Post[] = [];
 
   constructor(public postService: PostService, private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
+
+    console.log('Main Component Init');
+
+
     this.loading = true;
     this.postService.getPosts(this.offset, this.limit).subscribe(posts => {
         this.posts = posts;

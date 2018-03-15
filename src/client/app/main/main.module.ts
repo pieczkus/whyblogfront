@@ -20,9 +20,10 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagComponent } from '../tag/tag.component';
 import { BlogMaterialModule } from '../shared/blog-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [MainRoutingModule, SharedModule, ReactiveFormsModule],
+  imports: [MainRoutingModule, SharedModule, ReactiveFormsModule, HttpClientModule],
   declarations: [MainComponent, PostComponent, BodyComponent, ParagraphComponent,
     BodyComponentDirective, BreakoutComponent, QuoteComponent, YoutubeComponent, PostNavComponent,
     PostTagsComponent, PostTagLinkComponent, CommentsComponent, CommentComponent, CommentEditorComponent,

@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { User } from './user';
-import { HttpClient } from '../http/http.client';
 import { Config } from '../config/env.config';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) {
-  }
+  // constructor(private http: HttpClient) {
+  // }
 
   login(email: string, password: string) {
-    return this.http.post(Config.AUTH_API + '/login', JSON.stringify({email: email, password: password}))
-      .map((response: Response) => {
-        let user = response.json();
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-        }
-      });
+    // return this.http.post<User>(Config.AUTH_API + '/login', JSON.stringify({email: email, password: password}))
+    //   .pipe(
+    //     tap(user => {
+    //       if (user && user.token) {
+    //         //localStorage.setItem('currentUser', JSON.stringify(user));
+    //       }
+    //     }),
+    //     catchError(this.handleError<User>(`login email=${email}`))
+    //   );
   }
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    //localStorage.removeItem('currentUser');
   }
 
   getCurrentUser(): User {
-    let user = localStorage.getItem('currentUser');
-    return JSON.parse(user);
+    //const user = localStorage.getItem('currentUser');
+    //return JSON.parse(user);
+    return new User('{email: "asdad", token: "asdasda"}');
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(operation + ' ' + error); // log to console instead
+      return of(result as T);
+    };
   }
 }

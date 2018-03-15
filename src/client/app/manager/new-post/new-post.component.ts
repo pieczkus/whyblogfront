@@ -104,10 +104,10 @@ export class NewPostComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     if (this.componentsValid()) {
-      let tags = this.postForm.value.tags.split('|');
+      const tags = this.postForm.value.tags.split('|');
       this.post = this.postForm.value;
-      let bodyComponents = [];
-      for (let p of this.componentList.components) {
+      const bodyComponents = [];
+      for (const p of this.componentList.components) {
         bodyComponents.push(p.toBodyComponent());
       }
       this.post.body = bodyComponents;
@@ -121,8 +121,8 @@ export class NewPostComponent implements OnInit {
   }
 
   componentsValid(): boolean {
-    for (let comp of this.componentList.components) {
-      for (let field of comp.fields) {
+    for (const comp of this.componentList.components) {
+      for (const field of comp.fields) {
         if (!field.value || field.value === '') {
           return false;
         }

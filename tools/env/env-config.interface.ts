@@ -6,4 +6,5 @@ export interface EnvConfig {
   POST_API?: string;
   COMMENT_API?: string;
   API_KEY?: string;
+  VERSION?: string;
 }

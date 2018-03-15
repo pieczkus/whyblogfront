@@ -3,15 +3,15 @@
     <span class="post-overlay"></span>
 
     <span class="comment-count">
-      <md-icon style="color: whitesmoke;">chat_bubble_outline</md-icon>{{post.commentCount}}
+      <mat-icon style="color: whitesmoke;">chat_bubble_outline</mat-icon>{{ post.commentCount }}
     </span>
 
     <div class="post-info">
-      <div class="post-date">{{post.publishedOn | date:"dd/MM/yyyy 'o' hh:mm"}}</div>
-      <div class="post-title">{{post.title}}</div>
+      <div class="post-date">{{ post.publishedOn | date:"dd/MM/yyyy 'o' hh:mm" }}</div>
+      <div class="post-title">{{ post.title }}</div>
     </div>
   </a>
   <wb-read-post-button style="position: relative; overflow: hidden; text-transform: none;" class="post-button"
-  [timeToRead]="post.timeToRead" [postTitle]="post.title">
+                       [timeToRead]="post.timeToRead" [postTitle]="post.title">
   </wb-read-post-button>
 </div>

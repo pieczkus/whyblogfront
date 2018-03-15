@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PostComponent } from '../post-component';
 import { EditFieldsDialogComponent } from './edit/fields-edit.dialog';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   moduleId: module.id,
@@ -14,11 +14,11 @@ export class ComponentEntryComponent {
   @Input() component: PostComponent;
   @Input() seq: number;
 
-  constructor(public dialog: MdDialog) {
+  constructor(public dialog: MatDialog) {
   }
 
   openFieldsDialog() {
-    let dialogRef = this.dialog.open(EditFieldsDialogComponent, {
+    const dialogRef = this.dialog.open(EditFieldsDialogComponent, {
       height: '400px',
       width: '600px',
       disableClose: true

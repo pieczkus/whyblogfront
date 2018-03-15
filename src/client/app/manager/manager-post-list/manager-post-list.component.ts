@@ -34,6 +34,7 @@ export class ManagerPostListComponent implements OnInit {
 
   publish(title: string) {
     this.postService.publishPost(title).subscribe(res => {
+      console.log(res);
     });
   }
 

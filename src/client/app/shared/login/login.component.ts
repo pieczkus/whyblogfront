@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   returnUrl: string;
-  state: string = 'inactive';
+  state = 'inactive';
 
   constructor(private route: ActivatedRoute,
               private router: Router,

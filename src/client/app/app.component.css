@@ -4,12 +4,12 @@
   flex-flow: column;
 }
 
-md-sidenav {
+mat-sidenav {
   max-width: 400px;
   min-width: 350px;
 }
 
-md-sidenav-container {
+mat-sidenav-container {
   height: 100%;
 }
 

@@ -11,17 +11,17 @@ export class PostComponent {
   }
 
   clone(): PostComponent {
-    let clonedFields: PostComponentField[] = [];
-    for (let field of this.fields) {
+    const clonedFields: PostComponentField[] = [];
+    for (const field of this.fields) {
       clonedFields.push(field.clone());
     }
     return new (this.constructor as typeof PostComponent)(this.name, clonedFields) as this;
   }
 
   toBodyComponent(): PostBodyComponent {
-    let parameters: Object[] = [];
-    for (let f of this.fields) {
-      let field: any = {};
+    const parameters: Object[] = [];
+    for (const f of this.fields) {
+      const field: any = {};
       field['name'] = f.name.toLowerCase();
       field['value'] = f.value;
       parameters.push(field);

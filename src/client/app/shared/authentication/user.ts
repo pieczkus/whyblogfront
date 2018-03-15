@@ -2,8 +2,8 @@ export class User {
   email: string;
   token: string;
 
-  constructor(email: string, token: string) {
-    this.email = email;
-    this.token = token;
+  constructor(json: any) {
+    this.email = json.email;
+    this.token = json.token;
   }
 }

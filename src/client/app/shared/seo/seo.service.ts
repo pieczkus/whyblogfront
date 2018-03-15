@@ -12,15 +12,15 @@ export class SeoService {
   }
 
   public setMetaDescription(description: string) {
-    let tag = {name: 'description', content: description};
-    let attributeSelector: string = 'name="description"';
+    const tag = {name: 'description', content: description};
+    const attributeSelector = 'name="description"';
     this.meta.removeTag(attributeSelector);
     this.meta.addTag(tag, false);
   }
 
   public setMetaKeywords(keywords: string) {
-    let tag = {name: 'keywords', content: keywords};
-    let attributeSelector: string = 'name="keywords"';
+    const tag = {name: 'keywords', content: keywords};
+    const attributeSelector = 'name="keywords"';
     this.meta.removeTag(attributeSelector);
     this.meta.addTag(tag, false);
   }

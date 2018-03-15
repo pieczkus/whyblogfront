@@ -25,4 +25,12 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  op() {
+    console.log('open');
+  }
+
+  cl() {
+    console.log('close');
+  }
 }

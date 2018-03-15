@@ -5,6 +5,7 @@ import { LoaderState } from './loader';
 import { animate, state, style, transition, trigger, AnimationEvent } from '@angular/animations';
 
 @Component({
+  moduleId: module.id,
   selector: 'blog-loader',
   templateUrl: 'loader.component.html',
   styleUrls: ['loader.component.css'],

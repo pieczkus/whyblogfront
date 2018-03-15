@@ -22,7 +22,7 @@ export class ComponentListComponent implements OnInit {
   }
 
   addComponent() {
-    let component = this.postComponentsService.getComponent(this.selectedComponent);
+    const component = this.postComponentsService.getComponent(this.selectedComponent);
     this.components.push(component);
     this.selectedComponent = '';
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChange } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { PostService } from '../../shared/post/post.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PostNavComponent implements OnChanges {
   }
 
   ngOnChanges(changes: { [ propName: string]: SimpleChange }): void {
-    let change = changes['publishedOn'].currentValue;
+    const change = changes['publishedOn'].currentValue;
     if (change) {
       this.nextPostTitle = null;
       this.prevPostTitle = null;

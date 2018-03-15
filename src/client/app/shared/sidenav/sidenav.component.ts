@@ -8,10 +8,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SidenavComponent {
 
-  @Output() onClose = new EventEmitter();
+  @Output() close = new EventEmitter();
 
-  close(): void {
-    this.onClose.emit({});
+  closeNav(): void {
+    this.close.emit({});
   }
 
 }

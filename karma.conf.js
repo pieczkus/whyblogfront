@@ -3,20 +3,16 @@
 'use strict';
 
 var argv = require('yargs').argv;
-var minimatch = require("minimatch");
+var minimatch = require('minimatch');
 
-
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: './',
-
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
@@ -47,16 +43,19 @@ module.exports = function (config) {
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
+      'test-config.js',
+      { pattern: 'dist/dev/system-config.js', watched: true, included: true },
+
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
 
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
 
-      'test-config.js',
-      'dist/dev/app/system-config.js',
+      // Test dependencies for HttpClient
+      { pattern: 'node_modules/tslib/**/*.js', included: false, watched: true },
+
       'test-main.js'
     ],
 
@@ -66,10 +65,7 @@ module.exports = function (config) {
     },
 
     // list of files to exclude
-    exclude: [
-      'node_modules/**/*spec.js'
-    ],
-
+    exclude: ['node_modules/**/*spec.js'],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -79,30 +75,22 @@ module.exports = function (config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['mocha'],
 
-
     // web server port
     port: 9876,
 
-
     // enable / disable colors in the output (reporters and logs)
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [
-      'Chrome'
-    ],
-
+    browsers: ['Chrome'],
 
     customLaunchers: {
       Chrome_travis_ci: {
@@ -117,7 +105,7 @@ module.exports = function (config) {
 
     // Passing command line arguments to tests
     client: {
-      files:  argv.files ? minimatch.makeRe(argv.files).source : null
+      files: argv.files ? minimatch.makeRe(argv.files).source : null
     }
   });
 

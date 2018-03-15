@@ -3,35 +3,23 @@ import { FormsModule } from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
 
-import {
-  async
-} from '@angular/core/testing';
-import {
-  Route
-} from '@angular/router';
-import {
-  RouterTestingModule
-} from '@angular/router/testing';
+import { async } from '@angular/core/testing';
+import { Route } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 
 export function main() {
 
   describe('App component', () => {
 
-    let config: Route[] = [
-      {path: '', component: MainComponent},
-      {path: 'about', component: AboutComponent}
+    const config: Route[] = [
+      {path: '', component: MainComponent}
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [TestComponent, ToolbarComponent,
-          NavbarComponent, AppComponent,
-          MainComponent, AboutComponent],
+        declarations: [TestComponent, AppComponent, MainComponent],
         providers: [
           {provide: APP_BASE_HREF, useValue: '/'}
         ]
@@ -43,8 +31,8 @@ export function main() {
         TestBed
           .compileComponents()
           .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            let compiled = fixture.nativeElement;
+            const fixture = TestBed.createComponent(TestComponent);
+            const compiled = fixture.nativeElement;
 
             expect(compiled).toBeTruthy();
           });

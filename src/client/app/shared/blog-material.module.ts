@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule, MdCardModule, MdDialogModule, MdGridListModule, MdIconModule, MdInputModule, MdListModule, MdOptionModule,
-  MdProgressSpinnerModule,
-  MdSelectModule,
-  MdSidenavModule,
-  MdToolbarModule
+  MatButtonModule, MatCardModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatOptionModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatToolbarModule
 } from '@angular/material';
 
 @NgModule({
-  imports: [MdButtonModule, MdCardModule, MdGridListModule, MdInputModule, MdProgressSpinnerModule, MdIconModule, MdOptionModule,
-    MdSidenavModule, MdToolbarModule, MdListModule, MdSelectModule, MdDialogModule],
-  exports: [MdButtonModule, MdCardModule, MdGridListModule, MdInputModule, MdProgressSpinnerModule, MdIconModule, MdOptionModule,
-    MdSidenavModule, MdToolbarModule, MdListModule, MdSelectModule, MdDialogModule]
+  imports: [MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatProgressSpinnerModule, MatIconModule, MatOptionModule,
+    MatSidenavModule, MatToolbarModule, MatListModule, MatSelectModule, MatDialogModule],
+  exports: [MatButtonModule, MatCardModule, MatGridListModule, MatInputModule, MatProgressSpinnerModule, MatIconModule, MatOptionModule,
+    MatSidenavModule, MatToolbarModule, MatListModule, MatSelectModule, MatDialogModule]
 })
 export class BlogMaterialModule {
 

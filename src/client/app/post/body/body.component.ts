@@ -1,6 +1,4 @@
-import {
-  Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnChanges, SimpleChanges, Type, ViewChild } from '@angular/core';
 import { BodyComponentDirective } from './body-component.directive';
 import { PostBodyComponent } from '../../shared/post/post-body-component';
 import { ParagraphComponent } from './component/paragraph/paragraph.component';
@@ -24,16 +22,16 @@ export class BodyComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    let change = changes['components'].currentValue;
+    const change = changes['components'].currentValue;
     if (change) {
-      let viewContainerRef = this.bodyHost.viewContainerRef;
+      const viewContainerRef = this.bodyHost.viewContainerRef;
       viewContainerRef.clear();
 
-      let self = this;
+      const self = this;
       this.components.forEach(function (c) {
-        let componentFactory = self.componentFactoryResolver.resolveComponentFactory(
+        const componentFactory = self.componentFactoryResolver.resolveComponentFactory(
           self.resolveComponent(c.component));
-        let componentRef = viewContainerRef.createComponent(componentFactory);
+        const componentRef = viewContainerRef.createComponent(componentFactory);
         (<BaseBodyComponent>componentRef.instance).parameters = self.convertToParameterMap(c.parameters);
       });
     }
@@ -54,9 +52,9 @@ export class BodyComponent implements OnChanges {
   }
 
   convertToParameterMap(objects: Object[]) {
-    let parameters: Map<string, string> = new Map();
-    for (let o of objects) {
-      for (let property in o) {
+    const parameters: Map<string, string> = new Map();
+    for (const o of objects) {
+      for (const property in o) {
         if (o.hasOwnProperty(property)) {
           parameters.set(property, (<any>o)[property]);
         }

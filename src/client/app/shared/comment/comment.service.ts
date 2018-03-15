@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { PostComment } from './comment';
-import { HttpClient } from '../http/http.client';
 import { Config } from '../config/env.config';
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs/observable/of';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class CommentService {
@@ -10,23 +12,25 @@ export class CommentService {
   constructor(private http: HttpClient) {
   }
 
-
   getComments(postId: string): Observable<PostComment[]> {
-    return this.http.get(Config.COMMENT_API + '/reference/' + postId)
-      .map(res => <PostComment[]> res.json())
-      .catch(this.handleError);
+    return this.http.get<PostComment[]>(Config.COMMENT_API + '/reference/' + postId)
+      .pipe(
+        catchError(this.handleError<PostComment[]>(`getComments postId=${postId}`))
+      );
   }
 
   addComment(comment: PostComment): Observable<PostComment> {
-    return this.http.post(Config.COMMENT_API + '/', JSON.stringify(comment))
-      .catch(this.handleError);
+    return this.http.post<PostComment>(Config.COMMENT_API + '/', JSON.stringify(comment))
+      .pipe(
+        catchError(this.handleError<PostComment>(`addComment postId=${comment.uuid}`))
+      );
   }
 
-  private handleError(error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
-    let errMsg = error.message ? error.message : error.toString();
-    console.error(errMsg);
-    return Observable.throw(errMsg);
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      return of(result as T);
+    };
   }
 
 }

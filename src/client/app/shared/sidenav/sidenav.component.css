@@ -47,6 +47,7 @@
 
 .side .close-menu:hover {
   cursor: pointer;
+  box-shadow: none !important;
 }
 
 .side .close-menu:hover {
