@@ -1,6 +1,6 @@
-<md-list-item>
-  <md-icon *ngIf="post.pinned" md-list-icon>lock_outline</md-icon>
-  <md-icon *ngIf="!post.pinned" md-list-icon (click)="pinPost()" class="action-icon">lock_open</md-icon>
+<mat-list-item>
+  <mat-icon *ngIf="post.pinned" mat-list-icon>lock_outline</mat-icon>
+  <mat-icon *ngIf="!post.pinned" mat-list-icon (click)="pinPost()" class="action-icon">lock_open</mat-icon>
   <h4 md-line>{{ post.title }}</h4>
   <p md-line> {{ post.publishedOn | date }} </p>
-</md-list-item>
+</mat-list-item>

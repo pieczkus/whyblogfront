@@ -12,7 +12,7 @@ import { MainModule } from './main/main.module';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, MainModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, MainModule, ManagerModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

@@ -1,9 +1,9 @@
-<md-list>
+<mat-list>
   <h3 md-subheader>Posty</h3>
   <wb-manager-published-post *ngFor="let post of posts" [post]="post">
   </wb-manager-published-post>
-  <md-divider></md-divider>
+  <mat-divider></mat-divider>
   <h3 md-subheader>Nieopublikowane Posty</h3>
   <wb-manager-not-published-post *ngFor="let post of notPublishedPosts" [post]="post">
   </wb-manager-not-published-post>
-</md-list>
+</mat-list>

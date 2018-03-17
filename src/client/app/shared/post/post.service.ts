@@ -37,7 +37,8 @@ export class PostService {
   }
 
   getNotPublishedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(Config.POST_API + '/notpublished')
+    const options = {headers: this.createAuthorizationHeader(httpOptions.headers)};
+    return this.http.get<Post[]>(Config.POST_API + '/notpublished', options)
       .pipe(
         catchError(this.handleError<Post[]>('getNotPublishedPosts'))
       );
@@ -86,6 +87,7 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<Post> {
+    const options = {headers: this.createAuthorizationHeader(httpOptions.headers)};
     return this.http.post<Post>(Config.POST_API + '/', JSON.stringify(post)).pipe(
       catchError(this.handleError<Post>(`createPost title=${post.title}`))
     );
@@ -96,6 +98,13 @@ export class PostService {
       console.error(operation + ' ' + error); // log to console instead
       return of(result as T);
     };
+  }
+
+  private createAuthorizationHeader(headers: HttpHeaders): HttpHeaders {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && user.token) {
+      return headers.append('Authorization', 'Bearer ' + user.token);
+    }
   }
 
 }

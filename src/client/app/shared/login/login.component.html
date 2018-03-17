@@ -13,7 +13,7 @@
       </mat-form-field>
       <br/>
       <div class="progress-wrapper" [@spinnerVisibilityChanged]="state">
-        <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
+        <mat-progress-spinner mode="indeterminate" [diameter]="40"></mat-progress-spinner>
       </div>
       <div>
         <button type="submit" mat-raised-button [disabled]="!loginForm.valid || loading"

@@ -4,50 +4,50 @@
     <table class="full-width">
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Tytuł" formControlName="title" required>
-            <md-hint *ngIf="formErrors.title" align="end">{{ formErrors.title }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tytuł" formControlName="title" required>
+            <mat-hint *ngIf="formErrors.title" align="end">{{ formErrors.title }}</mat-hint>
+          </mat-form-field>
         </td>
         <td colspan="2">
-          <md-input-container class="full-width">
-            <input type="url" mdInput placeholder="Link do obrazka tytułowego" formControlName="coverUrl" required>
-            <md-hint *ngIf="formErrors.coverUrl" align="end">{{ formErrors.coverUrl }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input type="url" matInput placeholder="Link do obrazka tytułowego" formControlName="coverUrl" required>
+            <mat-hint *ngIf="formErrors.coverUrl" align="end">{{ formErrors.coverUrl }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Autor" formControlName="author" required>
-            <md-hint *ngIf="formErrors.author" align="end">{{ formErrors.author }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Autor" formControlName="author" required>
+            <mat-hint *ngIf="formErrors.author" align="end">{{ formErrors.author }}</mat-hint>
+          </mat-form-field>
         </td>
         <td colspan="2">
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Tagi" formControlName="tags" required>
-            <md-hint *ngIf="formErrors.tags" align="end">{{ formErrors.tags }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tagi" formControlName="tags" required>
+            <mat-hint *ngIf="formErrors.tags" align="end">{{ formErrors.tags }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Title" formControlName="metaTitle" required>
-            <md-hint *ngIf="formErrors.metaTitle" align="end">{{ formErrors.metaTitle }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Meta Title" formControlName="metaTitle" required>
+            <mat-hint *ngIf="formErrors.metaTitle" align="end">{{ formErrors.metaTitle }}</mat-hint>
+          </mat-form-field>
         </td>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Keywords" formControlName="metaKeywords" required>
-            <md-hint *ngIf="formErrors.metaKeywords" align="end">{{ formErrors.metaKeywords }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Meta Keywords" formControlName="metaKeywords" required>
+            <mat-hint *ngIf="formErrors.metaKeywords" align="end">{{ formErrors.metaKeywords }}</mat-hint>
+          </mat-form-field>
         </td>
         <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Meta Description" formControlName="metaDescription" required>
-            <md-hint *ngIf="formErrors.metaDescription" align="end">{{ formErrors.metaDescription }}</md-hint>
-          </md-input-container>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Meta Description" formControlName="metaDescription" required>
+            <mat-hint *ngIf="formErrors.metaDescription" align="end">{{ formErrors.metaDescription }}</mat-hint>
+          </mat-form-field>
         </td>
       </tr>
     </table>
@@ -57,10 +57,10 @@
     <wb-component-list></wb-component-list>
 
     <div *ngIf="loading; else elseBlock">
-      <md-progress-spinner mode="indeterminate" class="progress"></md-progress-spinner>
+      <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
     </div>
     <ng-template #elseBlock>
-      <button type="submit" md-raised-button [disabled]="!postForm.valid || !componentsValid()"
+      <button type="submit" mat-raised-button [disabled]="!postForm.valid || !componentsValid()"
               color="primary">Dodaj Post
       </button>
     </ng-template>
