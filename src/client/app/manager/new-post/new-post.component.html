@@ -1,68 +1,56 @@
 <wb-manager-toolbar></wb-manager-toolbar>
-<div class="manager">
-  <form [formGroup]="postForm" class="new-post" (ngSubmit)="onSubmit()" autocomplete="off">
-    <table class="full-width">
-      <tr>
-        <td>
-          <mat-form-field class="full-width">
+
+<form [formGroup]="postForm" class="new-post" (ngSubmit)="onSubmit()" autocomplete="off">
+  <mat-card>
+    <mat-vertical-stepper linear>
+      <mat-step label="Podstawowe Informacje" [completed]="isBasicStepCompleted()">
+        <div class="step-container">
+          <mat-form-field>
             <input matInput placeholder="Tytuł" formControlName="title" required>
             <mat-hint *ngIf="formErrors.title" align="end">{{ formErrors.title }}</mat-hint>
           </mat-form-field>
-        </td>
-        <td colspan="2">
+          <mat-form-field>
+            <input matInput placeholder="Autor" formControlName="author" required>
+            <mat-hint *ngIf="formErrors.author" align="end">{{ formErrors.author }}</mat-hint>
+          </mat-form-field>
+        </div>
+      </mat-step>
+      <mat-step label="Główny Obrazek" [completed]="isImageStepCompleted()">
+        <div class="step-container">
           <mat-form-field class="full-width">
             <input type="url" matInput placeholder="Link do obrazka tytułowego" formControlName="coverUrl" required>
             <mat-hint *ngIf="formErrors.coverUrl" align="end">{{ formErrors.coverUrl }}</mat-hint>
           </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Autor" formControlName="author" required>
-            <mat-hint *ngIf="formErrors.author" align="end">{{ formErrors.author }}</mat-hint>
-          </mat-form-field>
-        </td>
-        <td colspan="2">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Tagi" formControlName="tags" required>
-            <mat-hint *ngIf="formErrors.tags" align="end">{{ formErrors.tags }}</mat-hint>
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
+        </div>
+      </mat-step>
+      <mat-step label="SEO" [completed]="isSEOStepCompleted()">
+        <div class="step-container">
           <mat-form-field class="full-width">
             <input matInput placeholder="Meta Title" formControlName="metaTitle" required>
             <mat-hint *ngIf="formErrors.metaTitle" align="end">{{ formErrors.metaTitle }}</mat-hint>
           </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Meta Keywords" formControlName="metaKeywords" required>
-            <mat-hint *ngIf="formErrors.metaKeywords" align="end">{{ formErrors.metaKeywords }}</mat-hint>
-          </mat-form-field>
-        </td>
-        <td>
           <mat-form-field class="full-width">
             <input matInput placeholder="Meta Description" formControlName="metaDescription" required>
             <mat-hint *ngIf="formErrors.metaDescription" align="end">{{ formErrors.metaDescription }}</mat-hint>
           </mat-form-field>
-        </td>
-      </tr>
-    </table>
-
-    <h3>Post</h3>
-
-    <wb-component-list></wb-component-list>
-
-    <div *ngIf="loading; else elseBlock">
-      <mat-progress-spinner mode="indeterminate" class="progress"></mat-progress-spinner>
-    </div>
-    <ng-template #elseBlock>
-      <button type="submit" mat-raised-button [disabled]="!postForm.valid || !componentsValid()"
-              color="primary">Dodaj Post
-      </button>
-    </ng-template>
-  </form>
-</div>
+        </div>
+      </mat-step>
+      <mat-step label="Tagi" [completed]="isTagsStepCompleted()">
+        <div class="step-container">
+          <tag-select (tagsUpdated)="handleTagsUpdate($event)"></tag-select>
+        </div>
+      </mat-step>
+      <mat-step label="Kontent">
+        <wb-component-list></wb-component-list>
+        <div *ngIf="loading; else elseBlock">
+          <mat-progress-spinner mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+        </div>
+        <ng-template #elseBlock>
+          <button type="submit" mat-raised-button [disabled]="!postForm.valid || !componentsValid()"
+                  color="primary">Dodaj Post
+          </button>
+        </ng-template>
+      </mat-step>
+    </mat-vertical-stepper>
+  </mat-card>
+</form>

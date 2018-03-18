@@ -14,12 +14,13 @@ import { UrlComponent } from './new-post/component-list/component-entry/edit/inp
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublishedPostComponent } from './manager-post-list/published-post/published-post.component';
 import { NotPublishedPostComponent } from './manager-post-list/not-published-post/not-published-post.component';
+import { TagSelectComponent } from './new-post/tag-select/tag-select.component';
 
 @NgModule({
   imports: [ManagerRoutingModule, SharedModule, ReactiveFormsModule],
   declarations: [ManagerComponent, ManagerPostListComponent, ManagerToolbarComponent, NewPostComponent,
     ComponentListComponent, ComponentEntryComponent, EditFieldsDialogComponent, TextComponent,
-    InputDirective, UrlComponent, PublishedPostComponent, NotPublishedPostComponent],
+    InputDirective, UrlComponent, PublishedPostComponent, NotPublishedPostComponent, TagSelectComponent],
   exports: [ManagerComponent],
   entryComponents: [EditFieldsDialogComponent, TextComponent, UrlComponent]
 })

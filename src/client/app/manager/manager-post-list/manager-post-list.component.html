@@ -1,9 +1,33 @@
-<mat-list>
-  <h3 md-subheader>Posty</h3>
-  <wb-manager-published-post *ngFor="let post of posts" [post]="post">
-  </wb-manager-published-post>
-  <mat-divider></mat-divider>
-  <h3 md-subheader>Nieopublikowane Posty</h3>
-  <wb-manager-not-published-post *ngFor="let post of notPublishedPosts" [post]="post">
-  </wb-manager-not-published-post>
-</mat-list>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Posty
+      </mat-panel-title>
+      <mat-panel-description>
+        Jeszcze nie opublikowane
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template>
+      <wb-manager-published-post *ngFor="let post of notPublishedPosts" [post]="post">
+      </wb-manager-published-post>
+    </ng-template>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Posty
+      </mat-panel-title>
+      <mat-panel-description>
+        Opublikowane
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template>
+      <wb-manager-published-post *ngFor="let post of posts" [post]="post">
+      </wb-manager-published-post>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>

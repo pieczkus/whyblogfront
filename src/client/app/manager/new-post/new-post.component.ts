@@ -24,7 +24,6 @@ export class NewPostComponent implements OnInit {
     'coverUrl': '',
     'author': '',
     'metaTitle': '',
-    'metaKeywords': '',
     'metaDescription': '',
     'tags': ''
   };
@@ -42,14 +41,11 @@ export class NewPostComponent implements OnInit {
     'metaTitle': {
       'required': 'Meta tytuł jest wymagany'
     },
-    'metaKeywords': {
-      'required': 'Meta keywords jest wymagany'
-    },
     'metaDescription': {
       'required': 'Meta opis jest wymagany'
     },
     'tags': {
-      'required': 'Tagi jest wymagany'
+      'required': 'Tagi są wymagane'
     }
   };
 
@@ -73,10 +69,9 @@ export class NewPostComponent implements OnInit {
       'title': [this.post.title, [Validators.required, Validators.minLength(5)]],
       'coverUrl': [this.post.coverUrl, Validators.required],
       'author': [this.post.author, [Validators.required, Validators.minLength(2)]],
-      'metaTitle': [this.post.coverUrl, Validators.required],
-      'metaKeywords': [this.post.coverUrl, Validators.required],
-      'metaDescription': [this.post.coverUrl, Validators.required],
-      'tags': [this.post.coverUrl, Validators.required]
+      'metaTitle': [this.post.metaTitle, Validators.required],
+      'metaDescription': [this.post.metaDescription, Validators.required],
+      'tags': [this.post.tags, Validators.required]
     });
 
     this.postForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -99,6 +94,33 @@ export class NewPostComponent implements OnInit {
         }
       }
     }
+  }
+
+  isBasicStepCompleted(): boolean {
+    const titleControl = this.postForm.get('title');
+    const authorControl = this.postForm.get('author');
+    return titleControl.dirty && titleControl.valid && authorControl.dirty && authorControl.valid;
+  }
+
+  isImageStepCompleted(): boolean {
+    const coverUrlControl = this.postForm.get('coverUrl');
+    return coverUrlControl.dirty && coverUrlControl.valid;
+  }
+
+  isSEOStepCompleted(): boolean {
+    const metaTitleControl = this.postForm.get('metaTitle');
+    const metaDescriptionControl = this.postForm.get('metaDescription');
+    return metaTitleControl.dirty && metaTitleControl.valid && metaDescriptionControl.dirty && metaDescriptionControl.valid;
+  }
+
+  isTagsStepCompleted(): boolean {
+    return this.postForm.value.tags && this.postForm.value.tags.length > 0;
+  }
+
+  handleTagsUpdate(tags: String[]) {
+    this.postForm.patchValue({
+      tags: tags
+    });
   }
 
   onSubmit() {
