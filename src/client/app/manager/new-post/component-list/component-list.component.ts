@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostComponentService } from '../../../shared/component/post-component.service';
 import { PostComponent } from './post-component';
+
+const defaultComponent = 'Paragraf';
 
 @Component({
   moduleId: module.id,
@@ -8,23 +10,15 @@ import { PostComponent } from './post-component';
   templateUrl: 'component-list.component.html',
   styleUrls: ['component-list.component.css'],
 })
-export class ComponentListComponent implements OnInit {
+export class ComponentListComponent {
 
-  availableComponents: PostComponent[];
-  components: PostComponent[] = [];
-  selectedComponent: string;
+  @Input() components: PostComponent[];
 
   constructor(public postComponentsService: PostComponentService) {
   }
 
-  ngOnInit(): void {
-    this.availableComponents = this.postComponentsService.getAvailableComponents();
-  }
-
   addComponent() {
-    const component = this.postComponentsService.getComponent(this.selectedComponent);
-    this.components.push(component);
-    this.selectedComponent = '';
+    this.components.push(this.postComponentsService.getComponent(defaultComponent));
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ComponentListComponent } from './component-list/component-list.component';
+import { PostComponent } from './component-list/post-component';
 import { Post } from '../../shared/post/post';
 import { PostService } from '../../shared/post/post.service';
 import { LoaderService } from '../../shared/loader/loader.service';
@@ -49,8 +49,7 @@ export class NewPostComponent implements OnInit {
     }
   };
 
-  @ViewChild(ComponentListComponent)
-  private componentList: ComponentListComponent;
+  private components: PostComponent[] = [];
 
   constructor(private postservice: PostService,
               private loaderService: LoaderService,
@@ -129,7 +128,7 @@ export class NewPostComponent implements OnInit {
       const tags = this.postForm.value.tags.split('|');
       this.post = this.postForm.value;
       const bodyComponents = [];
-      for (const p of this.componentList.components) {
+      for (const p of this.components) {
         bodyComponents.push(p.toBodyComponent());
       }
       this.post.body = bodyComponents;
@@ -143,7 +142,9 @@ export class NewPostComponent implements OnInit {
   }
 
   componentsValid(): boolean {
-    for (const comp of this.componentList.components) {
+    console.log(this.components);
+    for (const comp of this.components) {
+      console.log(comp.fields);
       for (const field of comp.fields) {
         if (!field.value || field.value === '') {
           return false;

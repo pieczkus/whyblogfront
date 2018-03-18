@@ -2,7 +2,7 @@ import { Component, ComponentFactoryResolver, ViewChild, Type, AfterContentInit 
 import { MatDialogRef } from '@angular/material';
 import { PostComponentField } from '../../post-component-field';
 import { InputComponent } from './input/input.component';
-import { InputDirective } from './input.directive';
+import { InputDirective } from '../input.directive';
 import { TextComponent } from './input/text/text.component';
 import { UrlComponent } from './input/url/url.component';
 

@@ -9,7 +9,7 @@ import { ComponentListComponent } from './new-post/component-list/component-list
 import { ComponentEntryComponent } from './new-post/component-list/component-entry/component-entry.component';
 import { EditFieldsDialogComponent } from './new-post/component-list/component-entry/edit/fields-edit.dialog';
 import { TextComponent } from './new-post/component-list/component-entry/edit/input/text/text.component';
-import { InputDirective } from './new-post/component-list/component-entry/edit/input.directive';
+import { InputDirective } from './new-post/component-list/component-entry/input.directive';
 import { UrlComponent } from './new-post/component-list/component-entry/edit/input/url/url.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublishedPostComponent } from './manager-post-list/published-post/published-post.component';

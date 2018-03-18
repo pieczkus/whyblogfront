@@ -1,9 +1,18 @@
-<table>
-  <tr>
-    <td>{{ seq }}</td>
-    <td>{{ component.name }}</td>
-    <td>
-      <button type="button" mat-button (click)="openFieldsDialog()">Edytuj</button>
-    </td>
-  </tr>
-</table>
+<div class="buttons-row" (mouseleave)="propagateComponentChange()">
+  <button mat-icon-button (click)="selectComponent('Paragraf')" color="getButtonColor('Paragraf')" type="button">
+    <mat-icon>subject</mat-icon>
+  </button>
+  <button mat-icon-button (click)="selectComponent('Breakout')" color="getButtonColor('Breakout')" type="button">
+    <mat-icon>camera_alt</mat-icon>
+  </button>
+  <button mat-icon-button (click)="selectComponent('YouTube')" color="getButtonColor('YouTube')" type="button">
+    <mat-icon>movie</mat-icon>
+  </button>
+  <button mat-icon-button (click)="selectComponent('Quote')" color="getButtonColor('Quote')" type="button">
+    <mat-icon>record_voice_over</mat-icon>
+  </button>
+</div>
+<div class="content-row">
+  <ng-template inputHost></ng-template>
+</div>
+

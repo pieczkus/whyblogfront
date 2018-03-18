@@ -41,16 +41,19 @@
         </div>
       </mat-step>
       <mat-step label="Kontent">
-        <wb-component-list></wb-component-list>
-        <div *ngIf="loading; else elseBlock">
-          <mat-progress-spinner mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+        <div class="step-container">
+          <wb-component-list [components]="components"></wb-component-list>
         </div>
-        <ng-template #elseBlock>
-          <button type="submit" mat-raised-button [disabled]="!postForm.valid || !componentsValid()"
-                  color="primary">Dodaj Post
-          </button>
-        </ng-template>
       </mat-step>
     </mat-vertical-stepper>
+
+    <div *ngIf="loading; else elseBlock">
+      <mat-progress-spinner mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+    </div>
+    <ng-template #elseBlock>
+      <button type="submit" mat-raised-button [disabled]="!postForm.valid || !componentsValid()"
+              color="primary">Dodaj Post
+      </button>
+    </ng-template>
   </mat-card>
 </form>
